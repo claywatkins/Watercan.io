@@ -37,6 +37,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B12745924EE11A80092DEF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D1BE124EE09C60093EAB1 /* SceneDelegate.swift */,
+				0B3D1BDF24EE09C60093EAB1 /* AppDelegate.swift */,
+				0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0B12745A24EE11B70092DEF4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D1BE524EE09C60093EAB1 /* Main.storyboard */,
+				0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0B12745B24EE11C40092DEF4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B3D1BE324EE09C60093EAB1 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0B12745C24EE11CD0092DEF4 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataStack;
+			sourceTree = "<group>";
+		};
+		0B12745D24EE11D60092DEF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B12745E24EE11F30092DEF4 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
 		0B3D1BD324EE09C60093EAB1 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +104,12 @@
 		0B3D1BDE24EE09C60093EAB1 /* WaterMyPlantsBW */ = {
 			isa = PBXGroup;
 			children = (
-				0B3D1BDF24EE09C60093EAB1 /* AppDelegate.swift */,
-				0B3D1BE124EE09C60093EAB1 /* SceneDelegate.swift */,
-				0B3D1BE324EE09C60093EAB1 /* ViewController.swift */,
-				0B3D1BE524EE09C60093EAB1 /* Main.storyboard */,
-				0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */,
-				0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */,
+				0B12745E24EE11F30092DEF4 /* ModelController */,
+				0B12745D24EE11D60092DEF4 /* Model */,
+				0B12745C24EE11CD0092DEF4 /* CoreDataStack */,
+				0B12745B24EE11C40092DEF4 /* ViewControllers */,
+				0B12745A24EE11B70092DEF4 /* Storyboards */,
+				0B12745924EE11A80092DEF4 /* Resources */,
 				0B3D1BED24EE09C90093EAB1 /* Info.plist */,
 			);
 			path = WaterMyPlantsBW;
