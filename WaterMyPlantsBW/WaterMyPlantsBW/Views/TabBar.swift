@@ -22,19 +22,13 @@ class TabBar: UITabBarController {
                             imageName: "house",
                             selectedImageName: "house.fill",
                             title: "Plants")
-        
-        // For example only - Delete
-        let loginVC = createNavController(vc: LoginViewController(),
-        imageName: "house",
-        selectedImageName: "house.fill",
-        title: "Login")
          
          /* let settingsVC = createNavController(vc: SettingsViewController(),
                              imageName: "house",
                              selectedImageName: "house.fill",
                              title: "Settings") */
         
-        viewControllers = [tableVC, loginVC/* , settingsVC */]
+        viewControllers = [tableVC/* , settingsVC */]
         
         // Appearance of tab bar
         tabBar.barTintColor = .systemGray6

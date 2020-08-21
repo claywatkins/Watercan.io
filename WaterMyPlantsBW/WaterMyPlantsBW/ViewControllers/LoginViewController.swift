@@ -16,6 +16,16 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBlue
         navigationItem.title = "Login"
     }
+    
+    // TODO: Sign Up / Login fields
+    // Sign Up:
+    //     - username
+    //     - password
+    //     - phonenumber
+    
+    // Login:
+    //     - username
+    //     - password
 
 
 }

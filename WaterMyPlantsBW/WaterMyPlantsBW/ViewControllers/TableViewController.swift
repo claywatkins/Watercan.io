@@ -16,6 +16,8 @@ class TableViewController: UIViewController {
         overrideUserInterfaceStyle = .dark
         view.backgroundColor = .systemGreen
         navigationItem.title = "Plants"
+        guard let navController = navigationController else { return }
+        navController.navigationBar.prefersLargeTitles = true
         
         // setUpNavBar()
     }
