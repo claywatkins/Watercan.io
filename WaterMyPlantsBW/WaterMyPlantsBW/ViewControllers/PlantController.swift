@@ -27,10 +27,10 @@ class PlantController {
     
     var plants: [Plant] = []
     
-    private let baseURL = URL(string: "<baseURL>")!
-    private lazy var signUpURL = baseURL.appendingPathComponent("/users/signup")
-    private lazy var signInURL = baseURL.appendingPathComponent("/users/login")
-    private lazy var plantsURL = baseURL.appendingPathComponent("/plants/") //plants endpoint
+    private let baseURL = URL(string: "https://watercan-io-bw.herokuapp.com/")!
+    private lazy var signUpURL = baseURL.appendingPathComponent("api/auth/register")
+    private lazy var signInURL = baseURL.appendingPathComponent("api/auth/login")
+    private lazy var plantsURL = baseURL.appendingPathComponent("api/plants") //plants endpoint
     
     func signUp(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         print("signUpURL = \(signUpURL.absoluteString)")
