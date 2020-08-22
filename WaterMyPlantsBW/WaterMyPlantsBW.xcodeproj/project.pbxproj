@@ -13,6 +13,11 @@
 		0B3D1BE724EE09C60093EAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE524EE09C60093EAB1 /* Main.storyboard */; };
 		0B3D1BE924EE09C90093EAB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */; };
 		0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */; };
+		7CA424D724F09FE600392C70 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424D624F09FE600392C70 /* Bearer.swift */; };
+		7CA424D924F0A03200392C70 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424D824F0A03200392C70 /* User.swift */; };
+		7CA424DB24F0A06B00392C70 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DA24F0A06B00392C70 /* Plant.swift */; };
+		7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DC24F0A12F00392C70 /* SignInViewController.swift */; };
+		7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DE24F0A3D300392C70 /* PlantController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B3D1BEB24EE09C90093EAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B3D1BED24EE09C90093EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CA424D624F09FE600392C70 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		7CA424D824F0A03200392C70 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7CA424DA24F0A06B00392C70 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		7CA424DC24F0A12F00392C70 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7CA424DE24F0A3D300392C70 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantController.swift; path = WaterMyPlantsBW/ViewControllers/PlantController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				0B3D1BE324EE09C60093EAB1 /* ViewController.swift */,
+				7CA424DC24F0A12F00392C70 /* SignInViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -74,6 +85,9 @@
 		0B12745D24EE11D60092DEF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CA424D624F09FE600392C70 /* Bearer.swift */,
+				7CA424D824F0A03200392C70 /* User.swift */,
+				7CA424DA24F0A06B00392C70 /* Plant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -81,6 +95,7 @@
 		0B12745E24EE11F30092DEF4 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				7CA424DE24F0A3D300392C70 /* PlantController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -186,8 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */,
+				7CA424D724F09FE600392C70 /* Bearer.swift in Sources */,
+				7CA424DB24F0A06B00392C70 /* Plant.swift in Sources */,
+				7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* ViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
+				7CA424D924F0A03200392C70 /* User.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
