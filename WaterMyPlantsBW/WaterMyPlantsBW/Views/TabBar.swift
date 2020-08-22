@@ -18,7 +18,7 @@ class TabBar: UITabBarController {
     }
     
     func setUpTabBar() {
-        let tableVC = createNavController(vc: TableViewController(),
+        let tableVC = createNavController(vc: PlantCollectionTableViewController(),
                             imageName: "house",
                             selectedImageName: "house.fill",
                             title: "Plants")
@@ -29,11 +29,10 @@ class TabBar: UITabBarController {
         selectedImageName: "house.fill",
         title: "Login")
          
-         /* let settingsVC = createNavController(vc: SettingsViewController(),
+          /*let settingsVC = createNavController(vc: SettingsViewController(),
                              imageName: "house",
                              selectedImageName: "house.fill",
-                             title: "Settings") */
-        
+                             title: "Settings")*/
         viewControllers = [tableVC, loginVC/* , settingsVC */]
         
         // Appearance of tab bar
