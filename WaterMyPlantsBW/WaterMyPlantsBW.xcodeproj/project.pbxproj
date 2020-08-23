@@ -14,6 +14,7 @@
 		0B3D1BE924EE09C90093EAB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */; };
 		0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */; };
 		0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */; };
+		0D0A6CE324F3031D009A84F1 /* Plant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CE224F3031D009A84F1 /* Plant.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */,
+				0D0A6CE224F3031D009A84F1 /* Plant.xcdatamodeld */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 				0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* ViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
+				0D0A6CE324F3031D009A84F1 /* Plant.xcdatamodeld in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +391,18 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0D0A6CE224F3031D009A84F1 /* Plant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+			);
+			name = Plant.xcdatamodeld;
+			path = ../../../../Plant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B3D1BD424EE09C60093EAB1 /* Project object */;
 }
