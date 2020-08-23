@@ -15,6 +15,8 @@
 		0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */; };
 		0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */; };
 		0D0A6CE324F3031D009A84F1 /* Plant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CE224F3031D009A84F1 /* Plant.xcdatamodeld */; };
+		0DDAE0F824F30C7D0076EC41 /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAE0F724F30C7D0076EC41 /* Plant+Convenience.swift */; };
+		0DDAE0FC24F30E4E0076EC41 /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDAE0FB24F30E4E0076EC41 /* PlantRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		0B3D1BEB24EE09C90093EAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B3D1BED24EE09C90093EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = WaterMyPlantsBW/CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
+		0DDAE0F724F30C7D0076EC41 /* Plant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+Convenience.swift"; path = "WaterMyPlantsBW/Plant+Convenience.swift"; sourceTree = SOURCE_ROOT; };
+		0DDAE0FB24F30E4E0076EC41 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantRepresentation.swift; path = WaterMyPlantsBW/PlantRepresentation.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			children = (
 				0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */,
 				0D0A6CE224F3031D009A84F1 /* Plant.xcdatamodeld */,
+				0DDAE0FB24F30E4E0076EC41 /* PlantRepresentation.swift */,
+				0DDAE0F724F30C7D0076EC41 /* Plant+Convenience.swift */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -194,7 +200,9 @@
 				0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* ViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
+				0DDAE0F824F30C7D0076EC41 /* Plant+Convenience.swift in Sources */,
 				0D0A6CE324F3031D009A84F1 /* Plant.xcdatamodeld in Sources */,
+				0DDAE0FC24F30E4E0076EC41 /* PlantRepresentation.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

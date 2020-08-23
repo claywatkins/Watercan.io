@@ -6,7 +6,7 @@
 //  Copyright © 2020 Clayton Watkins. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreData
 
 class CoreDataStack {
