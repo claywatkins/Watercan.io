@@ -13,7 +13,7 @@
 		0B3D1BE724EE09C60093EAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE524EE09C60093EAB1 /* Main.storyboard */; };
 		0B3D1BE924EE09C90093EAB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */; };
 		0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */; };
-		0DB19B2E24F2E999006B7E5E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB19B2D24F2E999006B7E5E /* CoreDataStack.swift */; };
+		0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B3D1BEB24EE09C90093EAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B3D1BED24EE09C90093EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0DB19B2D24F2E999006B7E5E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "../../../../ios-sprint-challenge-my-movies/MyMovies/Views/CoreDataStack.swift"; sourceTree = "<group>"; };
+		0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = WaterMyPlantsBW/CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		0B12745C24EE11CD0092DEF4 /* CoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
-				0DB19B2D24F2E999006B7E5E /* CoreDataStack.swift */,
+				0D0A6CDC24F301A1009A84F1 /* CoreDataStack.swift */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -189,10 +189,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0A6CDD24F301A1009A84F1 /* CoreDataStack.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* ViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
-				0DB19B2E24F2E999006B7E5E /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
