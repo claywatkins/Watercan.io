@@ -37,10 +37,8 @@ class PlantCollectionTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(PlantTableViewCell.self, forCellReuseIdentifier: "PlantCell")
-        overrideUserInterfaceStyle = .dark
-        view.backgroundColor = .systemGreen
-        navigationItem.title = "Plants"
+        setupViewAsthetics()
+        setupTableViewCell()
         setUpNavBar()
         addPlant()
     }
@@ -50,24 +48,39 @@ class PlantCollectionTableViewController: UITableViewController {
         return plantArray.count
     }
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell()}
         cell.plantNameLabel.text = plantArray[indexPath.row].name
         cell.plantLastWatered.text = plantArray[indexPath.row].type
+        cell.plantImageView.image = UIImage(named: "defaultPlant2")
         return cell
-     }
+    }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-     }
+    // MARK: - Methods
+    private func setupTableViewCell() {
+        tableView.register(PlantTableViewCell.self, forCellReuseIdentifier: "PlantCell")
+        tableView.rowHeight = 100
+    }
+    
+    private func setupViewAsthetics() {
+        overrideUserInterfaceStyle = .dark
+        view.backgroundColor = .systemGreen
+        navigationItem.title = "Plants"
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
+    
 }
 
 // MARK: - Extension
 extension PlantCollectionTableViewController {
     func setUpNavBar() {
-           navigationController?.navigationBar.barTintColor = .systemGray6
-           navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-           navigationController?.navigationBar.prefersLargeTitles = true
-       }
+        navigationController?.navigationBar.barTintColor = .systemGray6
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }
