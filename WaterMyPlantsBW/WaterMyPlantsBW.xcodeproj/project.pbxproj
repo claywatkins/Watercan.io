@@ -18,6 +18,7 @@
 		7CA424DB24F0A06B00392C70 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DA24F0A06B00392C70 /* Plant.swift */; };
 		7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DC24F0A12F00392C70 /* SignInViewController.swift */; };
 		7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DE24F0A3D300392C70 /* PlantController.swift */; };
+		7CFB5D8824F4952A006455EE /* Plants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		7CA424DA24F0A06B00392C70 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		7CA424DC24F0A12F00392C70 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7CA424DE24F0A3D300392C70 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantController.swift; path = WaterMyPlantsBW/ViewControllers/PlantController.swift; sourceTree = SOURCE_ROOT; };
+		7CFB5D8724F4952A006455EE /* Plants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plants.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				7CA424D624F09FE600392C70 /* Bearer.swift */,
 				7CA424D824F0A03200392C70 /* User.swift */,
 				7CA424DA24F0A06B00392C70 /* Plant.swift */,
+				7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */,
+				7CFB5D8824F4952A006455EE /* Plants.xcdatamodeld in Sources */,
 				7CA424D724F09FE600392C70 /* Bearer.swift in Sources */,
 				7CA424DB24F0A06B00392C70 /* Plant.swift in Sources */,
 				7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */,
@@ -404,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7CFB5D8724F4952A006455EE /* Plants.xcdatamodel */,
+			);
+			currentVersion = 7CFB5D8724F4952A006455EE /* Plants.xcdatamodel */;
+			path = Plants.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B3D1BD424EE09C60093EAB1 /* Project object */;
 }

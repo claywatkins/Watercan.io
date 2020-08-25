@@ -32,6 +32,8 @@ class PlantController {
     private lazy var signInURL = baseURL.appendingPathComponent("api/auth/login")
     private lazy var plantsURL = baseURL.appendingPathComponent("api/plants") //plants endpoint
     
+    // MARK: - SignUp/Login
+    
     func signUp(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         print("signUpURL = \(signUpURL.absoluteString)")
         var request = postRequest(for: signUpURL)
@@ -103,6 +105,9 @@ class PlantController {
             completion(.failure(.failedSignIn))
         }
     }
+    
+    
+    // MARK: - CRUD
     
     func getPlants(completion: @escaping (Result<[Plant], NetworkError>) -> Void) {
         guard let bearer = bearer else {
