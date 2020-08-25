@@ -13,10 +13,14 @@ import UIKit
 struct Plant{
     let name: String
     let type: String
+    let waterFrequency: String
+    let image: UIImage
     
-    init(name: String, type: String){
+    init(name: String, type: String, waterFrequency: String, image: UIImage){
         self.name = name
         self.type = type
+        self.waterFrequency = waterFrequency
+        self.image = image
     }
 }
 
@@ -30,8 +34,8 @@ class PlantTableViewController: UIViewController {
     // MARK: - TODO:
     // Delete this once we have models to pull from.
     var plantArray: [Plant] = []
-    let plant1 = Plant(name: "Test1", type: "Type1")
-    let plant2 = Plant(name: "Test2", type: "Type2")
+    let plant1 = Plant(name: "Test1", type: "Type1", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
+    let plant2 = Plant(name: "Test2", type: "Type2", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
     func addPlant() {
         plantArray.append(plant1)
         plantArray.append(plant2)
@@ -39,6 +43,7 @@ class PlantTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        popUpView.delegate = self
         createTableView()
         setUpTableView()
         setupTableViewCell()
@@ -46,6 +51,10 @@ class PlantTableViewController: UIViewController {
         setUpNavBar()
         addPlant()
         setUpPopUpView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Navigation
@@ -63,7 +72,7 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell()}
         cell.plantNameLabel.text = plantArray[indexPath.row].name
         cell.plantLastWatered.text = plantArray[indexPath.row].type
-        cell.plantImageView.image = UIImage(named: "defaultPlant2")
+        cell.plantImageView.image = plantArray[indexPath.row].image
         return cell
     }
 }

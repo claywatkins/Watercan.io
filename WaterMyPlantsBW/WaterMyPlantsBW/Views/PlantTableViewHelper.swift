@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PlantTableViewController {
+extension PlantTableViewController{
     // MARK: - Helper Methods
     
     func createTableView() {
@@ -47,6 +47,11 @@ extension PlantTableViewController {
     @objc private func addPlantPopup(){
         animateScaleIn(desiredView: blurView)
         animateScaleInPopUpView()
+        popUpView.addPlantImageView.image = UIImage(named: "defaultPlant2")
+        popUpView.plantNameTextfield.text = ""
+        popUpView.plantSpeciesTextfield.text = ""
+        popUpView.waterFrequencyTextField.text = ""
+        navigationItem.title = "Add Plant"
     }
     
     func createBlurView() {
@@ -54,12 +59,16 @@ extension PlantTableViewController {
     }
     
     func setUpPopUpView() {
-        blurView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        createBlurView()
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.7)
         popUpView.backgroundColor = .white
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-        popUpView.constrainComponentsToPopupView()
+//        popUpView.configurePlantLabel()
+        popUpView.configurePlantImageView()
+        popUpView.configureAddImageButton()
+        popUpView.configureStackView()
+        popUpView.backgroundColor = .lightGray
     }
     
     /// Animates a view to scale in and display
@@ -67,33 +76,30 @@ extension PlantTableViewController {
         let backgroundView = self.view!
         backgroundView.addSubview(desiredView)
         desiredView.center = backgroundView.center
-        desiredView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        desiredView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         desiredView.alpha = 0
         
         UIView.animate(withDuration: 0.2) {
             desiredView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             desiredView.alpha = 1
-            //            desiredView.transform = CGAffineTransform.identity
         }
     }
     
     func animateScaleInPopUpView() {
         blurView.contentView.addSubview(popUpView)
         popUpView.center = blurView.center
-        popUpView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        popUpView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         popUpView.alpha = 0
         
         UIView.animate(withDuration: 0.2) {
             self.popUpView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.popUpView.alpha = 1
-            //            desiredView.transform = CGAffineTransform.identity
         }
     }
     
-    
     func animateScaleOut(desiredView: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
-            desiredView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            desiredView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             desiredView.alpha = 0
         }, completion: { (success: Bool) in
             desiredView.removeFromSuperview()
@@ -105,4 +111,30 @@ extension PlantTableViewController {
             
         })
     }
+    
+}
+
+extension PlantTableViewController: PlantAddedProtocol {
+    func cancelTapped() {
+        animateScaleOut(desiredView: popUpView)
+        animateScaleOut(desiredView: blurView)
+        navigationItem.title = "Plants"
+    }
+    
+    func plantWasAdded() {
+        guard let name = popUpView.plantNameTextfield.text, !name.isEmpty,
+            let species = popUpView.plantSpeciesTextfield.text, !species.isEmpty,
+            let wateringFrequency = popUpView.waterFrequencyTextField.text, !wateringFrequency.isEmpty,
+            let image = popUpView.addPlantImageView.image
+            else { return }
+        let newPlant = Plant(name: name, type: species, waterFrequency: wateringFrequency, image: image)
+        plantArray.append(newPlant)
+        self.tableView.reloadData()
+        animateScaleOut(desiredView: popUpView)
+        animateScaleOut(desiredView: blurView)
+        navigationItem.title = "Plants"
+    }
+    
+    
+    
 }
