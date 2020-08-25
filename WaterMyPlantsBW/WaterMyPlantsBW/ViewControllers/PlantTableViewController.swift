@@ -33,51 +33,52 @@ class PlantTableViewController: UIViewController {
     
     // MARK: - TODO:
     // Delete this once we have data to pull from.
-//    var plantArray: [Plant] = []
-//    let plant1 = Plant(name: "Test1", type: "Type1", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
-//    let plant2 = Plant(name: "Test2", type: "Type2", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
-    func addPlant() {
-//        plantArray.append(plant1)
-//        plantArray.append(plant2)
-    }
-    
-    // MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        popUpView.delegate = self
-        createTableView()
-        setUpTableView()
-        setupTableViewCell()
-        setupViewAsthetics()
-        setUpNavBar()
-        addPlant()
-        setUpPopUpView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    
+    //    var plantArray: [Plant] = []
+    //    let plant1 = Plant(name: "Test1", type: "Type1", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
+    //    let plant2 = Plant(name: "Test2", type: "Type2", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
+    //    func addPlant() {
+    //        plantArray.append(plant1)
+    //        plantArray.append(plant2)
+//}
+
+// MARK: - LifeCycle
+override func viewDidLoad() {
+    super.viewDidLoad()
+    popUpView.delegate = self
+    createTableView()
+    setUpTableView()
+    setupTableViewCell()
+    setupViewAsthetics()
+    setUpNavBar()
+//    addPlant()
+    setUpPopUpView()
+}
+
+override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+}
+
 }
 //MARK: - TableView Data Source
 extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return plantArray.count
+        //        return plantArray.count
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell()}
-//        cell.plantNameLabel.text = plantArray[indexPath.row].name
-//        cell.plantLastWatered.text = plantArray[indexPath.row].type
-//        cell.plantImageView.image = plantArray[indexPath.row].image
+        //        cell.plantNameLabel.text = plantArray[indexPath.row].name
+        //        cell.plantLastWatered.text = plantArray[indexPath.row].type
+        //        cell.plantImageView.image = plantArray[indexPath.row].image
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destinationVC = PlantDetailViewController()
-//        destinationVC.plant = plantArray[indexPath.row]
+        //        destinationVC.plant = plantArray[indexPath.row]
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
+

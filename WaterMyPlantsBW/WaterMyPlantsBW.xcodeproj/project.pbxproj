@@ -24,6 +24,7 @@
 		0BB2F9E924F5A8C800304B89 /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9E824F5A8C800304B89 /* PlantRepresentation.swift */; };
 		0BB2F9EB24F5A9AA00304B89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EA24F5A9AA00304B89 /* User.swift */; };
 		0BB2F9ED24F5AA5300304B89 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EC24F5AA5300304B89 /* Bearer.swift */; };
+		0BB2F9EF24F5AF0500304B89 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EE24F5AF0500304B89 /* PlantController.swift */; };
 		E3679C0924EF727D00A91940 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3679C0824EF727D00A91940 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		0BB2F9E824F5A8C800304B89 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
 		0BB2F9EA24F5A9AA00304B89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0BB2F9EC24F5AA5300304B89 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		0BB2F9EE24F5AF0500304B89 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
 		E3679C0824EF727D00A91940 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 		0B12745E24EE11F30092DEF4 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				0BB2F9EE24F5AF0500304B89 /* PlantController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				0B7686E324F35AF8001B001E /* Popup.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* LoginViewController.swift in Sources */,
 				0B87FD8D24F49FE600520F1D /* PlantTableViewHelper.swift in Sources */,
+				0BB2F9EF24F5AF0500304B89 /* PlantController.swift in Sources */,
 				0BB2F9E324F5A74200304B89 /* Plant.xcdatamodeld in Sources */,
 				0B78230024F0BC2C006E6CF8 /* PlantTableViewCell.swift in Sources */,
 				0BB2F9ED24F5AA5300304B89 /* Bearer.swift in Sources */,
