@@ -13,8 +13,10 @@
 		0B3D1BE724EE09C60093EAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE524EE09C60093EAB1 /* Main.storyboard */; };
 		0B3D1BE924EE09C90093EAB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */; };
 		0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3D1BEA24EE09C90093EAB1 /* LaunchScreen.storyboard */; };
-		0B7822FC24F0B6CE006E6CF8 /* PlantCollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7822FB24F0B6CE006E6CF8 /* PlantCollectionTableViewController.swift */; };
+		0B7686E324F35AF8001B001E /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7686E224F35AF8001B001E /* Popup.swift */; };
 		0B78230024F0BC2C006E6CF8 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */; };
+		0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */; };
+		0B87FD8D24F49FE600520F1D /* PlantTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */; };
 		E3679C0924EF727D00A91940 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3679C0824EF727D00A91940 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +29,10 @@
 		0B3D1BE824EE09C90093EAB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B3D1BEB24EE09C90093EAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B3D1BED24EE09C90093EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B7822FB24F0B6CE006E6CF8 /* PlantCollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionTableViewController.swift; sourceTree = "<group>"; };
+		0B7686E224F35AF8001B001E /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
+		0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
+		0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewHelper.swift; sourceTree = "<group>"; };
 		E3679C0824EF727D00A91940 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				0B3D1BE324EE09C60093EAB1 /* LoginViewController.swift */,
-				0B7822FB24F0B6CE006E6CF8 /* PlantCollectionTableViewController.swift */,
+				0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -128,6 +132,8 @@
 			children = (
 				E3679C0824EF727D00A91940 /* TabBar.swift */,
 				0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */,
+				0B7686E224F35AF8001B001E /* Popup.swift */,
+				0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,12 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7686E324F35AF8001B001E /* Popup.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* LoginViewController.swift in Sources */,
+				0B87FD8D24F49FE600520F1D /* PlantTableViewHelper.swift in Sources */,
 				0B78230024F0BC2C006E6CF8 /* PlantTableViewCell.swift in Sources */,
-				0B7822FC24F0B6CE006E6CF8 /* PlantCollectionTableViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 				E3679C0924EF727D00A91940 /* TabBar.swift in Sources */,
+				0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

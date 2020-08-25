@@ -1,0 +1,69 @@
+//
+//  PlantTableViewController.swift
+//  WaterMyPlantsBW
+//
+//  Created by Clayton Watkins on 8/24/20.
+//  Copyright © 2020 Clayton Watkins. All rights reserved.
+//
+
+import UIKit
+
+// MARK: - TODO:
+// Delete this once we have models to pull from.
+struct Plant{
+    let name: String
+    let type: String
+    
+    init(name: String, type: String){
+        self.name = name
+        self.type = type
+    }
+}
+
+class PlantTableViewController: UIViewController {
+    
+    // MARK: - Properties
+    let tableView = UITableView()
+    let popUpView = Popup()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
+    // MARK: - TODO:
+    // Delete this once we have models to pull from.
+    var plantArray: [Plant] = []
+    let plant1 = Plant(name: "Test1", type: "Type1")
+    let plant2 = Plant(name: "Test2", type: "Type2")
+    func addPlant() {
+        plantArray.append(plant1)
+        plantArray.append(plant2)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createTableView()
+        setUpTableView()
+        setupTableViewCell()
+        setupViewAsthetics()
+        setUpNavBar()
+        addPlant()
+        setUpPopUpView()
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+}
+//MARK: - TableView Data Source
+extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return plantArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell()}
+        cell.plantNameLabel.text = plantArray[indexPath.row].name
+        cell.plantLastWatered.text = plantArray[indexPath.row].type
+        cell.plantImageView.image = UIImage(named: "defaultPlant2")
+        return cell
+    }
+}

@@ -12,13 +12,12 @@ class TabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         overrideUserInterfaceStyle = .dark
         setUpTabBar()
     }
     
     func setUpTabBar() {
-        let tableVC = createNavController(vc: PlantCollectionTableViewController(),
+        let tableVC = createNavController(vc: PlantTableViewController(),
                             imageName: "house",
                             selectedImageName: "house.fill",
                             title: "Plants")
