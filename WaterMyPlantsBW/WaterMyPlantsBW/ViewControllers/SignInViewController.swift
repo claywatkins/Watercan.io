@@ -48,61 +48,61 @@ class SignInViewController: UIViewController {
         }
     }
     
-    @IBAction func signInButton(_ sender: UIButton) {
-               if let username = usernameTextField.text,
-                !username.isEmpty,
-                let password = passwordTextField.text,
-                !password.isEmpty,
-                let phoneNumber = phoneNumberTextField.text,
-                !phoneNumber.isEmpty
-                {
-                let user = User(id: <#T##Int#>, username: <#T##String#>, password: <#T##String#>, phoneNumber: <#T##String#>)
-                switch loginType {
-                case .signUp:
-                    plantController?.signUp(with: user, completion: { (result) in
-                        do {
-                            let success = try result.get()
-                            if success {
-                                DispatchQueue.main.async {
-                                    let alertController = UIAlertController(title: "Sign up successful!", message: "Please log in.", preferredStyle: .alert)
-                                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                    alertController.addAction(alertAction)
-                                    self.present(alertController, animated: true) {
-                                        self.loginType = .signIn
-                                        self.signInSegmentedControl.selectedSegmentIndex = 1
-                                        self.signInButton.setTitle("Sign In", for: .normal)
-                                    }
-                                }
-                            }
-                        } catch {
-                            print("Error signing up: \(error)")
-                        }
-                    })
-                case .signIn:
-                    plantController?.signIn(with: user, completion: { (result) in
-                        do {
-                            let success = try result.get()
-                            if success {
-                                DispatchQueue.main.async {
-                                    self.dismiss(animated: true, completion: nil)
-
-                                }
-                            }
-                        } catch {
-                            if let error = error as? PlantController.NetworkError {
-                                switch error {
-                                case .failedSignIn:
-                                    print("Sign in failed")
-                                case .noData, .noToken:
-                                    print("No data received")
-                                default:
-                                    print("Other error occurred")
-                                }
-                            }
-                        }
-                    })
-                }
-            }
+//    @IBAction func signInButton(_ sender: UIButton) {
+//               if let username = usernameTextField.text,
+//                !username.isEmpty,
+//                let password = passwordTextField.text,
+//                !password.isEmpty,
+//                let phoneNumber = phoneNumberTextField.text,
+//                !phoneNumber.isEmpty
+//                {
+//                let user = User(id: <#T##Int#>, username: <#T##String#>, password: <#T##String#>, phoneNumber: <#T##String#>)
+//                switch loginType {
+//                case .signUp:
+//                    plantController?.signUp(with: user, completion: { (result) in
+//                        do {
+//                            let success = try result.get()
+//                            if success {
+//                                DispatchQueue.main.async {
+//                                    let alertController = UIAlertController(title: "Sign up successful!", message: "Please log in.", preferredStyle: .alert)
+//                                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                                    alertController.addAction(alertAction)
+//                                    self.present(alertController, animated: true) {
+//                                        self.loginType = .signIn
+//                                        self.signInSegmentedControl.selectedSegmentIndex = 1
+//                                        self.signInButton.setTitle("Sign In", for: .normal)
+//                                    }
+//                                }
+//                            }
+//                        } catch {
+//                            print("Error signing up: \(error)")
+//                        }
+//                    })
+//                case .signIn:
+//                    plantController?.signIn(with: user, completion: { (result) in
+//                        do {
+//                            let success = try result.get()
+//                            if success {
+//                                DispatchQueue.main.async {
+//                                    self.dismiss(animated: true, completion: nil)
+//
+//                                }
+//                            }
+//                        } catch {
+//                            if let error = error as? PlantController.NetworkError {
+//                                switch error {
+//                                case .failedSignIn:
+//                                    print("Sign in failed")
+//                                case .noData, .noToken:
+//                                    print("No data received")
+//                                default:
+//                                    print("Other error occurred")
+//                                }
+//                            }
+//                        }
+//                    })
+//                }
+//            }
         }
     
-}
+

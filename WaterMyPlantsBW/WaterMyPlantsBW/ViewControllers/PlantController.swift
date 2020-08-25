@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class PlantController {
     
@@ -21,11 +22,12 @@ class PlantController {
         case failedSignIn
         case noToken
         case tryAgain
+        case noDecode
+        case noEncode
+        case noRep
     }
     
     var bearer: Bearer?
-    
-    var plants: [Plant] = []
     
     private let baseURL = URL(string: "https://watercan-io-bw.herokuapp.com/")!
     private lazy var signUpURL = baseURL.appendingPathComponent("api/auth/register")
@@ -109,7 +111,12 @@ class PlantController {
     
     // MARK: - CRUD
     
-    func getPlants(completion: @escaping (Result<[Plant], NetworkError>) -> Void) {
+
+    typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
+
+    func fetchEntriesFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        let requestURL = baseURL.appendingPathExtension("json")
+        
         guard let bearer = bearer else {
             completion(.failure(.noToken))
             return
@@ -117,67 +124,160 @@ class PlantController {
         var request = URLRequest(url: plantsURL)
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
             if let error = error {
-                print("Error receiving gig data: \(error)")
+                print("Error fetching entries: \(error)")
                 completion(.failure(.tryAgain))
                 return
             }
+            
             if let response = response as? HTTPURLResponse,
                 response.statusCode == 401 {
                 completion(.failure(.noToken))
                 return
             }
             guard let data = data else {
-                print("No data received from getGigs")
+                print("No data returned by data task.")
                 completion(.failure(.noData))
                 return
             }
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.dateDecodingStrategy = .iso8601
             do {
-                let plants = try jsonDecoder.decode([Plant].self, from: data)
-                completion(.success(plants))
-                
+                let plantRepresentations = Array(try JSONDecoder().decode([String: PlantRepresentation].self, from: data).values)
+                try self.updatePlants(with: plantRepresentations)
+                completion(.success(true))
             } catch {
-                print("Error decoding gig data: \(error)")
-                completion(.failure(.tryAgain))
+                print("Error decoding entry representations: \(error)")
+                completion(.failure(.noDecode))
+                return
             }
         }
         task.resume()
     }
-    
-    func createPlant(with plant: Plant, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
+
+    //Put the task to the server
+    func sendPlantToServer(plant: Plant, completion: @escaping CompletionHandler = {_ in}) {
+        
         guard let bearer = bearer else {
             completion(.failure(.noToken))
             return
         }
-        var request = postRequest(for: plantsURL)
-        request.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
-        do {
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.dateEncodingStrategy = .iso8601
-            let jsonData = try jsonEncoder.encode(plant)
-            request.httpBody = jsonData
-            let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
-                if let error = error {
-                    print("Error creating plant: \(error)")
-                    completion(.failure(.tryAgain))
-                    return
-                }
-                if let response = response as? HTTPURLResponse,
-                    response.statusCode == 401 {
-                    completion(.failure(.noToken))
-                    return
-                }
-                self.plants.append(plant)
-                completion(.success(true))
-            }
-            task.resume()
-        } catch {
-            print("Error encoding plant: \(error)")
-            completion(.failure(.tryAgain))
+        var signInRequest = postRequest(for: signInURL)
+        signInRequest.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        
+        guard let id = plant.id else {
+            completion(.failure(.noToken))
+            return
         }
+        
+        let requestURL = baseURL.appendingPathComponent(id).appendingPathExtension(".json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            guard let representation = plant.plantRepresentation else {
+                completion(.failure(.noRep))
+                return
+            }
+            do {
+            request.httpBody = try JSONEncoder().encode(representation)
+        } catch {
+            print("Error encoding task \(plant): \(error)")
+            completion(.failure(.noEncode))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                print("Error PUTting task to server: \(error)")
+                completion(.failure(.tryAgain))
+                return
+            }
+            
+            completion(.success(true))
+        }
+        
+        task.resume()
     }
-    
+
+    func deletePlantFromServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
+        
+        guard let bearer = bearer else {
+            completion(.failure(.noToken))
+            return
+        }
+        var signInRequest = postRequest(for: signInURL)
+        signInRequest.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        
+        guard let id = plant.id else {
+            completion(.failure(.noToken))
+            return
+        }
+        
+        
+        let requestURL = baseURL.appendingPathComponent(id).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(response!)
+            completion(.success(true))
+        }
+        
+        task.resume()
+    }
+
+    func updatePlants(with representations: [PlantRepresentation]) throws {
+        //let context = CoreDataStack.shared.container.newBackgroundContext()
+        let identifiersToFetch = representations.compactMap({UUID(uuidString: $0.identifier)})
+        
+        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var entriesToCreate = representationsByID
+        
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
+        
+        let context = CoreDataStack.shared.mainContext
+        
+        do {
+            let existingPlants = try context.fetch(fetchRequest)
+            
+            // Update Existing
+            for plants in existingPlants {
+                guard let id = plant.identifier,
+                    let representation = representationsByID[id] else { continue }
+                
+                plant.userID = representation.userID
+                plant.species = representation.species
+                plant.nickname = representation.nickname
+                plant.id = representation.id
+                plant.h2ofrequency = representation.h2ofrequency
+                
+                plantsToCreate.removeValue(forKey: id)
+            }
+            for representation in plantsToCreate.values {
+                Plant(plantRepresentation: representation, context: context)
+            }
+        } catch {
+            print("Error fetching entries for UUIDs: \(error)")
+        }
+        try CoreDataStack.shared.mainContext.save()
+    }
+
+    func update(plant: Plant, representation: PlantRepresentation) {
+        plant.userID = representation.userID
+        plant.species = representation.species
+        plant.nickname = representation.nickname
+        plant.id = representation.id
+        plant.h2ofrequency = representation.h2ofrequency
+    }
+
+
+
+
+
+
+}
 }
