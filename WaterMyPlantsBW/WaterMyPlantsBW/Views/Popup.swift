@@ -48,8 +48,6 @@ class Popup: UIView{
         addPlantImageView.layer.cornerRadius = 10
         addPlantImageView.clipsToBounds = true
         addPlantImageView.backgroundColor = .lightGray
-        // MARK: TODO - Change this to actual image
-        //        addPlantImageView.image = UIImage(named: "defaultPlant2")
         
         // Constraints
         addPlantImageView.translatesAutoresizingMaskIntoConstraints = false

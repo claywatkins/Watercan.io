@@ -17,6 +17,7 @@
 		0B78230024F0BC2C006E6CF8 /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */; };
 		0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */; };
 		0B87FD8D24F49FE600520F1D /* PlantTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */; };
+		0B87FD8F24F4E08000520F1D /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87FD8E24F4E08000520F1D /* PlantDetailViewController.swift */; };
 		E3679C0924EF727D00A91940 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3679C0824EF727D00A91940 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewController.swift; sourceTree = "<group>"; };
 		0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewHelper.swift; sourceTree = "<group>"; };
+		0B87FD8E24F4E08000520F1D /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		E3679C0824EF727D00A91940 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 			children = (
 				0B3D1BE324EE09C60093EAB1 /* LoginViewController.swift */,
 				0B87FD8A24F49DF900520F1D /* PlantTableViewController.swift */,
+				0B87FD8E24F4E08000520F1D /* PlantDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				0B87FD8D24F49FE600520F1D /* PlantTableViewHelper.swift in Sources */,
 				0B78230024F0BC2C006E6CF8 /* PlantTableViewCell.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
+				0B87FD8F24F4E08000520F1D /* PlantDetailViewController.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 				E3679C0924EF727D00A91940 /* TabBar.swift in Sources */,
 				0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */,

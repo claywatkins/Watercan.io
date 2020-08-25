@@ -9,8 +9,8 @@
 import UIKit
 
 extension PlantTableViewController{
-    // MARK: - Helper Methods
     
+    // MARK: - Helper Methods
     func createTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

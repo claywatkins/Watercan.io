@@ -45,13 +45,13 @@ class PlantTableViewCell: UITableViewCell {
     private func configureNameLabel() {
         plantNameLabel.numberOfLines = 0
         plantNameLabel.adjustsFontSizeToFitWidth = true
-        plantNameLabel.font = plantNameLabel.font.withSize(26)
+        plantNameLabel.font = plantNameLabel.font.withSize(20)
     }
     
     private func configureDateLabel() {
         plantLastWatered.numberOfLines = 0
         plantLastWatered.adjustsFontSizeToFitWidth = true
-        plantLastWatered.font = plantLastWatered.font.withSize(22)
+        plantLastWatered.font = plantLastWatered.font.withSize(16)
     }
     
     private func setImageConstraints() {

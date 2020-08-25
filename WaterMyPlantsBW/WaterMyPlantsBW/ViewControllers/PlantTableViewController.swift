@@ -32,7 +32,7 @@ class PlantTableViewController: UIViewController {
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
     // MARK: - TODO:
-    // Delete this once we have models to pull from.
+    // Delete this once we have data to pull from.
     var plantArray: [Plant] = []
     let plant1 = Plant(name: "Test1", type: "Type1", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
     let plant2 = Plant(name: "Test2", type: "Type2", waterFrequency: "Daily", image: UIImage(named: "defaultPlant2")!)
@@ -41,6 +41,7 @@ class PlantTableViewController: UIViewController {
         plantArray.append(plant2)
     }
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
@@ -53,14 +54,11 @@ class PlantTableViewController: UIViewController {
         setUpPopUpView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
 }
 //MARK: - TableView Data Source
 extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
@@ -74,5 +72,11 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
         cell.plantLastWatered.text = plantArray[indexPath.row].type
         cell.plantImageView.image = plantArray[indexPath.row].image
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destinationVC = PlantDetailViewController()
+        destinationVC.plant = plantArray[indexPath.row]
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
