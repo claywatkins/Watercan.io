@@ -125,7 +125,7 @@ class PlantController {
 //            return
 //        }
         
-        let requestURL = baseURL.appendingPathComponent("\(id)").appendingPathExtension(".json")
+        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension(".json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         

@@ -43,10 +43,10 @@ extension Plant {
             else { return nil}
         
         self.init(id: Int16(id),
-                  nickname: plantRepresentartion.nickname ?? "",
+                  nickname: plantRepresentartion.nickname,
                   userId: Int16(userId),
-                  species: plantRepresentartion.species ?? "",
-                  h20Frequency: plantRepresentartion.h20frequency ?? "",
+                  species: plantRepresentartion.species,
+                  h20Frequency: plantRepresentartion.h20frequency,
                   context: context)
     }
     
