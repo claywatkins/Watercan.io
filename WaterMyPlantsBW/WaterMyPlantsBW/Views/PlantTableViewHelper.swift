@@ -43,6 +43,15 @@ extension PlantTableViewController{
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
+        let refreshButtonAdd = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchPlantsFromServer))
+        navigationItem.setLeftBarButton(refreshButtonAdd, animated: true)
+    }
+    
+    @objc private func fetchPlantsFromServer() {
+        // MARK: - TODO
+        // Fetch all availble plants stored on the server
+        // save to core data
+        // reload the tableView
     }
     
     @objc private func addPlantPopup(){
