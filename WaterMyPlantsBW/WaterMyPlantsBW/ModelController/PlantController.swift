@@ -29,6 +29,7 @@ class PlantController {
     
     var bearer: Bearer?
     var userId: Int?
+    var plantId: Int?
     
     static let shared = PlantController()
     
@@ -122,7 +123,7 @@ class PlantController {
     
     // MARK: - CRUD
     //Put the task to the server
-    func sendPlantToServer(plant: Plant, completion: @escaping CompletionHandler = {_ in}) {
+    func sendPlantToServer(plant: Plant, completion: @escaping (Result<PlantRepresentation, NetworkError>) -> Void) {
         
         guard let bearer = bearer else {
             completion(.failure(.noToken))
@@ -150,7 +151,7 @@ class PlantController {
                 return
             }
             
-            let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error {
                     print("Error PUTting task to server: \(error)")
                     completion(.failure(.tryAgain))
@@ -161,11 +162,24 @@ class PlantController {
                     print(response)
                 }
                 
-                completion(.success(true))
+                guard let data = data else {
+                    return
+                }
+                
+                do {
+                    let returnedPlant = try JSONDecoder().decode(PlantRepresentation.self, from: data)
+                    self.plantId = returnedPlant.id
+//                    guard let newPlant = Plant(plantRepresentartion: returnedPlant) else { return }
+                    completion(.success(returnedPlant))
+
+                } catch {
+                    print("Error getting plant ID: \(error)")
+                }
+                
             }
             
             task.resume()
         }
-        
     }
+    
 }
