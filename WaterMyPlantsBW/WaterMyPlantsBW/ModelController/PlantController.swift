@@ -14,6 +14,7 @@ class PlantController {
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
+        case delete = "DELETE"
     }
     
     enum NetworkError: Error {
@@ -169,7 +170,6 @@ class PlantController {
                 do {
                     let returnedPlant = try JSONDecoder().decode(PlantRepresentation.self, from: data)
                     self.plantId = returnedPlant.id
-//                    guard let newPlant = Plant(plantRepresentartion: returnedPlant) else { return }
                     completion(.success(returnedPlant))
 
                 } catch {
@@ -180,6 +180,28 @@ class PlantController {
             
             task.resume()
         }
+    }
+    
+    func deletePlantFromServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
+        
+        guard let bearer = bearer else {
+            completion(.failure(.noToken))
+            return
+        }
+
+        let requestURL = plantsURL.appendingPathComponent("\(plant.id)")
+        print(requestURL.absoluteString)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(response!)
+            completion(.success(true))
+        }
+        
+        task.resume()
     }
     
 }

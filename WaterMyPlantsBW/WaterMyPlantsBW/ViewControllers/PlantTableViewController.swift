@@ -73,6 +73,11 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let plant = self.fetchedResultsController.object(at: indexPath)
+            plantController.deletePlantFromServer(plant) { _ in
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
+            }
             let moc = CoreDataStack.shared.mainContext
             moc.delete(plant)
             do {
@@ -80,7 +85,6 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
             } catch {
                 print("Error deleting Plant: \(error)")
             }
-            self.tableView.reloadData()
         }
     }
     
