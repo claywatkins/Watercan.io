@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension PlantTableViewController{
     
@@ -42,6 +43,15 @@ extension PlantTableViewController{
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
+        let refreshButtonAdd = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchPlantsFromServer))
+        navigationItem.setLeftBarButton(refreshButtonAdd, animated: true)
+    }
+    
+    @objc private func fetchPlantsFromServer() {
+        // MARK: - TODO
+        // Fetch all availble plants stored on the server
+        // save to core data
+        // reload the tableView
     }
     
     @objc private func addPlantPopup(){
@@ -64,7 +74,7 @@ extension PlantTableViewController{
         popUpView.backgroundColor = .white
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-//        popUpView.configurePlantLabel()
+        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
@@ -127,14 +137,72 @@ extension PlantTableViewController: PlantAddedProtocol {
             let wateringFrequency = popUpView.waterFrequencyTextField.text, !wateringFrequency.isEmpty,
             let image = popUpView.addPlantImageView.image
             else { return }
-//        let newPlant = Plant(name: name, type: species, waterFrequency: wateringFrequency, image: image)
-//        plantArray.append(newPlant)
+        let newPlant = Plant(nickname: name, species: species, h2ofrequency: wateringFrequency)
+        plantController.sendPlantToServer(plant: newPlant) { (returnedPlant) in
+            do{
+                let result = try returnedPlant.get()
+                newPlant.id = Int16(result.id!)
+                newPlant.image = image.pngData()
+                let moc = CoreDataStack.shared.mainContext
+                do{
+                    try moc.save()
+                } catch {
+                    print("Error saving Plant Object: \(error)")
+                }
+            }
+            catch {
+                print("Sending plant to server was not successful: \(error)")
+            }
+        }
         self.tableView.reloadData()
         animateScaleOut(desiredView: popUpView)
         animateScaleOut(desiredView: blurView)
         navigationItem.title = "Plants"
     }
-    
-    
-    
+}
+
+extension PlantTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .update:
+            guard let indexPath = indexPath else { return }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .move:
+            guard let oldIndexPath = indexPath,
+                let newIndexPath = newIndexPath else { return }
+            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        @unknown default:
+            break
+        }
+    }
 }
