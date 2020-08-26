@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .dark
+        // overrideUserInterfaceStyle = .dark
         view.backgroundColor = .systemBlue
         navigationItem.title = "Sign Up"
         setUpViews()
@@ -78,30 +78,47 @@ class LoginViewController: UIViewController {
             
             signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
             signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signInButton.widthAnchor.constraint(equalToConstant: 64),
+            signInButton.widthAnchor.constraint(equalToConstant: 96),
             
         ])
         
         loginTypeSegmentedControl.selectedSegmentIndex = 0
         
-        usernameTextField.backgroundColor = .white
-        usernameTextField.textColor = .black
         usernameTextField.placeholder = "Username"
-        usernameTextField.layer.cornerRadius = 6.0
+        usernameTextField.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
+        usernameTextField.font = UIFont.systemFont(ofSize: 15)
+        usernameTextField.borderStyle = UITextField.BorderStyle.roundedRect
+        usernameTextField.autocorrectionType = UITextAutocorrectionType.no
+        usernameTextField.keyboardType = UIKeyboardType.default
+        usernameTextField.returnKeyType = UIReturnKeyType.done
+        usernameTextField.clearButtonMode = UITextField.ViewMode.whileEditing
+        usernameTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         
-        phoneNumberTextField.backgroundColor = .white
-        phoneNumberTextField.textColor = .black
         phoneNumberTextField.placeholder = "Phone Number"
-        phoneNumberTextField.layer.cornerRadius = 6.0
+        phoneNumberTextField.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
+        phoneNumberTextField.font = UIFont.systemFont(ofSize: 15)
+        phoneNumberTextField.borderStyle = UITextField.BorderStyle.roundedRect
+        phoneNumberTextField.autocorrectionType = UITextAutocorrectionType.no
+        phoneNumberTextField.keyboardType = UIKeyboardType.default
+        phoneNumberTextField.returnKeyType = UIReturnKeyType.done
+        phoneNumberTextField.clearButtonMode = UITextField.ViewMode.whileEditing
+        phoneNumberTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         
-        passwordTextField.backgroundColor = .white
-        passwordTextField.textColor = .black
         passwordTextField.placeholder = "Password"
-        passwordTextField.layer.cornerRadius = 6.0
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
+        passwordTextField.font = UIFont.systemFont(ofSize: 15)
+        passwordTextField.borderStyle = UITextField.BorderStyle.roundedRect
+        passwordTextField.autocorrectionType = UITextAutocorrectionType.no
+        passwordTextField.keyboardType = UIKeyboardType.default
+        passwordTextField.returnKeyType = UIReturnKeyType.done
+        passwordTextField.clearButtonMode = UITextField.ViewMode.whileEditing
+        passwordTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         
         signInButton.backgroundColor = .none
-        signInButton.tintColor = .black
         signInButton.setTitle("Sign Up", for: .normal)
+        signInButton.layer.borderWidth = 2.0
+        signInButton.layer.borderColor = UIColor.white.cgColor
         signInButton.layer.cornerRadius = 6.0
     }
 /*
