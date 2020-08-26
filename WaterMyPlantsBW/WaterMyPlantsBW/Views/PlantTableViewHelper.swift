@@ -48,8 +48,6 @@ extension PlantTableViewController{
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
-        //        let refreshButtonAdd = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchPlantsFromServer))
-        //        navigationItem.setLeftBarButton(refreshButtonAdd, animated: true)
         refreshControl.addTarget(self, action: #selector(fetchPlantsFromServer), for: .valueChanged)
     }
     
@@ -57,7 +55,6 @@ extension PlantTableViewController{
         plantController.fetchEntriesFromServer { _ in
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
-                self.tableView.reloadData()
             }
         }
     }

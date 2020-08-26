@@ -179,7 +179,7 @@ class PlantController {
             return
         }
         
-        let requestURL = plantsURL.appendingPathComponent("\(self.userId!)")
+        let requestURL = plantsURL.appendingPathComponent("\(plant.id)")
         print(requestURL.absoluteString)
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.delete.rawValue
