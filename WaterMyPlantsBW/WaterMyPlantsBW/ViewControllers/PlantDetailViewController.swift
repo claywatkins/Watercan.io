@@ -19,7 +19,7 @@ class PlantDetailViewController: UIViewController {
     let frequencyLabel = UILabel()
     let plantWateringFrequencyTextfield = UITextField()
     let stack = UIStackView()
-    
+  
     var plant: Plant?{
         didSet{
             updateViews()
