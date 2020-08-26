@@ -70,9 +70,23 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let plant = self.fetchedResultsController.object(at: indexPath)
+            let moc = CoreDataStack.shared.mainContext
+            moc.delete(plant)
+            do {
+                try moc.save()
+            } catch {
+                print("Error deleting Plant: \(error)")
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destinationVC = PlantDetailViewController()
-        //        destinationVC.plant = plantArray[indexPath.row]
+        destinationVC.plant = self.fetchedResultsController.object(at: indexPath)
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }

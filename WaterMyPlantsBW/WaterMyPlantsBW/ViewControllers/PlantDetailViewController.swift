@@ -29,7 +29,8 @@ class PlantDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.title = "\(plant!.name)"
+        guard let name = plant?.nickname else { return }
+        navigationItem.title = "\(name)"
         addSubviews()
         updateViews()
         configurePlantImage()
@@ -39,10 +40,11 @@ class PlantDetailViewController: UIViewController {
     // MARK: - Methods
     private func updateViews() {
         guard let plant = plant else { return }
-//        plantNameTextfield.text = plant.name
-//        plantSpeciesTextfield.text = plant.type
-//        plantWateringFrequencyTextfield.text = plant.waterFrequency
-//        plantImage.image = plant.image
+        plantNameTextfield.text = plant.nickname
+        plantSpeciesTextfield.text = plant.species
+        plantWateringFrequencyTextfield.text = plant.h2ofrequency
+        guard let image = plant.image else { return }
+        plantImage.image = UIImage(data: image)
     }
     
     // MARK: - Helper Methods
