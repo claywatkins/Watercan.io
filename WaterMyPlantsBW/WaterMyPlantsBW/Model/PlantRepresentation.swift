@@ -12,8 +12,8 @@ struct PlantRepresentation: Equatable, Codable {
     enum Key: String, CodingKey{
         case userId = "user_id"
     }
-    let id: Int
-    let userId: Int
+    let id: Int?
+    let userId: Int?
     let nickname: String
     let species: String
     let h20frequency: String
