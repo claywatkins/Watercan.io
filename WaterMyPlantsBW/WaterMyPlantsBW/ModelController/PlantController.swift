@@ -56,22 +56,12 @@ class PlantController {
             let jsonData = try JSONEncoder().encode(user)
             print(String(data: jsonData, encoding: .utf8)!)
             request.httpBody = jsonData
-            let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { (_, _, error) in
                 if let error = error {
                     print("SignUp failed with error: \(error)")
                     completion(.failure(.failedSignUp))
                     return
                 }
-                
-//                if let response = response {
-//                    print(response)
-//                }
-//                guard let response = response as? HTTPURLResponse,
-//                    response.statusCode == 200 else {
-//                        print("Sign up was unsuccesful")
-//                        completion(.failure(.failedSignUp))
-//                        return
-//                }
                 completion(.success(true))
             }
             task.resume()
@@ -171,7 +161,7 @@ class PlantController {
                     let returnedPlant = try JSONDecoder().decode(PlantRepresentation.self, from: data)
                     self.plantId = returnedPlant.id
                     completion(.success(returnedPlant))
-
+                    
                 } catch {
                     print("Error getting plant ID: \(error)")
                 }
@@ -188,7 +178,7 @@ class PlantController {
             completion(.failure(.noToken))
             return
         }
-
+        
         let requestURL = plantsURL.appendingPathComponent("\(plant.id)")
         print(requestURL.absoluteString)
         var request = URLRequest(url: requestURL)
@@ -202,6 +192,91 @@ class PlantController {
         }
         
         task.resume()
+    }
+    
+    func fetchEntriesFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        guard let bearer = bearer else {
+            completion(.failure(.noToken))
+            return
+        }
+        guard let id = userId else { return }
+        
+        let requestURL = plantsURL.appendingPathComponent("\(id)")
+        print(requestURL.absoluteString)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error fetching entries: \(error)")
+                completion(.failure(.tryAgain))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 401 {
+                print(response)
+                completion(.failure(.noToken))
+                return
+            }
+            guard let data = data else {
+                print("No data returned by data task.")
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                let plantRepresentations = try JSONDecoder().decode([PlantRepresentation].self, from: data)
+                try self.updatePlants(with: plantRepresentations)
+                completion(.success(true))
+            } catch {
+                print("Error decoding entry representations: \(error)")
+                completion(.failure(.noDecode))
+                return
+            }
+        }
+        task.resume()
+    }
+    
+    func updatePlants(with representations: [PlantRepresentation]) throws {
+        let context = CoreDataStack.shared.container.newBackgroundContext()
+        
+        let identifiersToFetch = representations.compactMap({$0.id})
+        
+        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var plantsToCreate = representationsByID
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
+        
+        context.performAndWait {
+            do {
+                let existingPlants = try context.fetch(fetchRequest)
+                
+                // Update Existing
+                for plant in existingPlants {
+                    let id = Int(plant.id)
+                    guard let representation = representationsByID[id] else { continue }
+                    
+                    self.update(plant: plant, representation: representation)
+                    
+                    plantsToCreate.removeValue(forKey: id)
+                }
+                for representation in plantsToCreate.values {
+                    Plant(plantRepresentartion: representation, context: context)
+                }
+            } catch {
+                print("Error fetching plants: \(error)")
+            }
+        }
+        try CoreDataStack.shared.save(context: context)
+    }
+    
+    func update(plant: Plant, representation: PlantRepresentation) {
+        plant.species = representation.species
+        plant.nickname = representation.nickname
+        plant.id = Int16(representation.id!)
+        plant.h2ofrequency = representation.h2ofrequency
     }
     
 }
