@@ -12,6 +12,7 @@ import CoreData
 class PlantTableViewController: UIViewController {
     
     // MARK: - Properties
+    let refreshControl = UIRefreshControl()
     let tableView = UITableView()
     let popUpView = Popup()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))

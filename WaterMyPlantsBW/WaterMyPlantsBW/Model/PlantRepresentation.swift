@@ -9,9 +9,6 @@
 import Foundation
 
 struct PlantRepresentation: Equatable, Codable {
-//    enum Key: String, CodingKey{
-//        case userId = "user_id"
-//    }
     var id: Int?
     let nickname: String
     let species: String

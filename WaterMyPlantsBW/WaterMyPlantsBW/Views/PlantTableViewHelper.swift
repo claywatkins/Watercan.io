@@ -12,13 +12,18 @@ import CoreData
 extension PlantTableViewController{
     
     // MARK: - Helper Methods
-    func createTableView() {
+    func createTableView() {        
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
     }
     
     func setUpTableView() {
@@ -43,15 +48,15 @@ extension PlantTableViewController{
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
-        let refreshButtonAdd = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchPlantsFromServer))
-        navigationItem.setLeftBarButton(refreshButtonAdd, animated: true)
+        refreshControl.addTarget(self, action: #selector(fetchPlantsFromServer), for: .valueChanged)
     }
     
     @objc private func fetchPlantsFromServer() {
-        // MARK: - TODO
-        // Fetch all availble plants stored on the server
-        // save to core data
-        // reload the tableView
+        plantController.fetchEntriesFromServer { _ in
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
     
     @objc private func addPlantPopup(){
