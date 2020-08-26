@@ -12,10 +12,9 @@ struct PlantRepresentation: Equatable, Codable {
     enum Key: String, CodingKey{
         case userId = "user_id"
     }
-    
-    var id: Int?
-    var userId: Int?
-    var nickname: String?
-    var species: String?
-    var h20frequency: String?
+    let id: Int
+    let userId: Int
+    let nickname: String
+    let species: String
+    let h20frequency: String
 }

@@ -36,6 +36,12 @@ class PlantController {
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
+    private func postRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
     
     // MARK: - SignUp/Login
     func signUp(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
@@ -64,13 +70,6 @@ class PlantController {
             print("Error encoding user: \(error)")
             completion(.failure(.failedSignUp))
         }
-    }
-    
-    private func postRequest(for url: URL) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        return request
     }
     
     func signIn(with user: User, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
@@ -111,21 +110,20 @@ class PlantController {
     }
     
     // MARK: - CRUD
-    
     //Put the task to the server
-    func sendPlantToServer(with user: User, plant: Plant, completion: @escaping CompletionHandler = {_ in}) {
+    func sendPlantToServer(plant: Plant, completion: @escaping CompletionHandler = {_ in}) {
         
         guard let bearer = bearer else {
             completion(.failure(.noToken))
             return
         }
         var signInRequest = postRequest(for: signInURL)
-        signInRequest.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
+        signInRequest.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
         
-        guard let id = user.id else {
-            completion(.failure(.noToken))
-            return
-        }
+//        guard let id = plant.userId else {
+//            completion(.failure(.noToken))
+//            return
+//        }
         
         let requestURL = baseURL.appendingPathComponent("\(id)").appendingPathExtension(".json")
         var request = URLRequest(url: requestURL)
