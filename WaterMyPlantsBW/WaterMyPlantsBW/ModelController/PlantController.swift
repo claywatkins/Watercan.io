@@ -28,6 +28,7 @@ class PlantController {
     }
     
     var bearer: Bearer?
+    var userId: Int?
     
     private let baseURL = URL(string: "https://watercan-io-bw.herokuapp.com/")!
     private lazy var signUpURL = baseURL.appendingPathComponent("api/auth/register")
@@ -94,6 +95,7 @@ class PlantController {
                     completion(.failure(.noData))
                     return
                 }
+                // Getting the bearer
                 do {
                     self.bearer = try JSONDecoder().decode(Bearer.self, from: data)
                     completion(.success(true))
@@ -101,6 +103,15 @@ class PlantController {
                     print("Error decoding bearer: \(error)")
                     completion(.failure(.noToken))
                 }
+                // Getting the userID
+                do {
+                    let userID = try JSONDecoder().decode(UserIdGetter.self, from: data)
+                    self.userId = userID.user.id
+                } catch {
+                    print("Error decoding user: \(error)")
+                    completion(.failure(.noDecode))
+                }
+                
             }
             task.resume()
         } catch {
@@ -117,17 +128,13 @@ class PlantController {
             completion(.failure(.noToken))
             return
         }
-        var signInRequest = postRequest(for: signInURL)
-        signInRequest.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
+        guard let id = userId else { return }
         
-//        guard let id = plant.userId else {
-//            completion(.failure(.noToken))
-//            return
-//        }
-        
-        let requestURL = baseURL.appendingPathComponent("").appendingPathExtension(".json")
+        let requestURL = plantsURL.appendingPathComponent("\(id)")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = "PUT"
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
             guard let representation = plant.plantRepresentation else {
