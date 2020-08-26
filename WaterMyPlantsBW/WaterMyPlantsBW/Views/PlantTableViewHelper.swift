@@ -64,7 +64,7 @@ extension PlantTableViewController{
         popUpView.backgroundColor = .white
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-//        popUpView.configurePlantLabel()
+        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
@@ -127,8 +127,10 @@ extension PlantTableViewController: PlantAddedProtocol {
             let wateringFrequency = popUpView.waterFrequencyTextField.text, !wateringFrequency.isEmpty,
             let image = popUpView.addPlantImageView.image
             else { return }
-//        let newPlant = Plant(name: name, type: species, waterFrequency: wateringFrequency, image: image)
-//        plantArray.append(newPlant)
+        let newPlant = Plant(nickname: name, species: species, h2ofrequency: wateringFrequency)
+        plantController.sendPlantToServer(plant: newPlant)
+        //        let newPlant = Plant(name: name, type: species, waterFrequency: wateringFrequency, image: image)
+        //        plantArray.append(newPlant)
         self.tableView.reloadData()
         animateScaleOut(desiredView: popUpView)
         animateScaleOut(desiredView: blurView)

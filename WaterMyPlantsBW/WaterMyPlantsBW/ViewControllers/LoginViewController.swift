@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     // MARK: - Properties
     
     let defaults = UserDefaults.standard
+    let plantController = PlantController.shared
     
     // var apiController: APIController?
     var loginType = LoginType.signUp
@@ -119,82 +120,84 @@ class LoginViewController: UIViewController {
         signInButton.layer.borderWidth = 2.0
         signInButton.layer.borderColor = UIColor.white.cgColor
         signInButton.layer.cornerRadius = 6.0
+        signInButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
-    /*
-     func buttonTapped(_ sender: UIButton) {
-     if let username = usernameTextField.text,
-     !username.isEmpty,
-     let password = passwordTextField.text,
-     !password.isEmpty,
-     let phoneNumber = phoneNumberTextField.text,
-     !phoneNumber.isEmpty {
-     let user = User(username: username,
-     password: password,
-     phoneNumber: phoneNumber)
-     
-     // Depending on LoginType:
-     if loginType == .signUp {
-     apiController?.signUp(with: user, completion: { (result) in
-     do {
-     let success = try result.get()
-     if success {
-     DispatchQueue.main.async {
-     let alertController = UIAlertController(title: "Sign Up Complete",
-     message: "Please sign in",
-     preferredStyle: .alert)
-     let alertAction = UIAlertAction(title: "OK",
-     style: .default,
-     handler: nil)
-     alertController.addAction(alertAction)
-     self.present(alertController, animated: true) {
-     self.loginType = .signIn
-     self.loginTypeSegmentedControl.selectedSegmentIndex = 1
-     self.signInButton.setTitle("Sign In", for: .normal)
-     }
-     }
-     }
-     } catch {
-     NSLog("Error signing up: \(error)")
-     }
-     })
-     } else {
-     apiController?.signIn(with: user, completion: { (result) in
-     do {
-     let success = try result.get()
-     if success {
-     DispatchQueue.main.async {
-     self.dismiss(animated: true, completion: nil)
-     }
-     }
-     } catch {
-     if let error = error as? APIController.NetworkError {
-     switch error {
-     case .failedSignIn:
-     NSLog("Sign in failed")
-     case .noToken:
-     NSLog("Invalid or missing token")
-     case .noData:
-     NSLog("No data received")
-     default:
-     NSLog("Unknown error occured")
-     }
-     }
-     }
-     })
-     }
-     }
-     }
-     
-     func signInTypeChanged(_ sender: UISegmentedControl) {
-     if sender.selectedSegmentIndex == 0 {
-     loginType = .signUp
-     signInButton.setTitle("Sign Up", for: .normal)
-     } else {
-     loginType = .signIn
-     signInButton.setTitle("Sign In", for: .normal)
-     }
-     }
-     */
+    
+    @objc func buttonTapped() {
+        if let username = usernameTextField.text,
+            !username.isEmpty,
+            let password = passwordTextField.text,
+            !password.isEmpty,
+            let phoneNumber = phoneNumberTextField.text
+            {
+            let user = User(username: username,
+                            password: password,
+                            phonenumber: phoneNumber)
+            
+            // Depending on LoginType:
+            if loginType == .signUp {
+                plantController.signUp(with: user, completion: { (result) in
+                    do {
+                        let success = try result.get()
+                        if success {
+                            DispatchQueue.main.async {
+                                let alertController = UIAlertController(title: "Sign Up Complete",
+                                                                        message: "Please sign in",
+                                                                        preferredStyle: .alert)
+                                let alertAction = UIAlertAction(title: "OK",
+                                                                style: .default,
+                                                                handler: nil)
+                                alertController.addAction(alertAction)
+                                self.present(alertController, animated: true) {
+                                    self.loginType = .signIn
+                                    self.loginTypeSegmentedControl.selectedSegmentIndex = 1
+                                    self.signInButton.setTitle("Sign In", for: .normal)
+                                }
+                            }
+                        }
+                    } catch {
+                        NSLog("Error signing up: \(error)")
+                    }
+                })
+            } else {
+                plantController.signIn(with: user, completion: { (result) in
+                    do {
+                        let success = try result.get()
+                        if success {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true, completion: nil)
+                                print("Sign In Successful!!!!!!!!!!!!!!!")
+                            }
+                        }
+                    } catch {
+                        if let error = error as? PlantController.NetworkError {
+                            switch error {
+                            case .failedSignIn:
+                                NSLog("Sign in failed")
+                            case .noToken:
+                                NSLog("Invalid or missing token")
+                            case .noData:
+                                NSLog("No data received")
+                            default:
+                                NSLog("Unknown error occured")
+                            }
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func signInTypeChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            loginType = .signUp
+            signInButton.setTitle("Sign Up", for: .normal)
+        } else {
+            loginType = .signIn
+            signInButton.setTitle("Sign In", for: .normal)
+        }
+    }
+    
     
 }
 

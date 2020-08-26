@@ -30,6 +30,8 @@ class PlantController {
     var bearer: Bearer?
     var userId: Int?
     
+    static let shared = PlantController()
+    
     private let baseURL = URL(string: "https://watercan-io-bw.herokuapp.com/")!
     private lazy var signUpURL = baseURL.appendingPathComponent("api/auth/register")
     private lazy var signInURL = baseURL.appendingPathComponent("api/auth/login")
@@ -58,12 +60,16 @@ class PlantController {
                     completion(.failure(.failedSignUp))
                     return
                 }
-                guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 else {
-                        print("Sign up was unsuccesful")
-                        completion(.failure(.failedSignUp))
-                        return
-                }
+                
+//                if let response = response {
+//                    print(response)
+//                }
+//                guard let response = response as? HTTPURLResponse,
+//                    response.statusCode == 200 else {
+//                        print("Sign up was unsuccesful")
+//                        completion(.failure(.failedSignUp))
+//                        return
+//                }
                 completion(.success(true))
             }
             task.resume()
@@ -95,21 +101,15 @@ class PlantController {
                     completion(.failure(.noData))
                     return
                 }
-                // Getting the bearer
+                // Getting the bearer and UserID
                 do {
                     self.bearer = try JSONDecoder().decode(Bearer.self, from: data)
+                    let userID = try JSONDecoder().decode(UserIdGetter.self, from: data)
+                    self.userId = userID.user.id
                     completion(.success(true))
                 } catch {
                     print("Error decoding bearer: \(error)")
                     completion(.failure(.noToken))
-                }
-                // Getting the userID
-                do {
-                    let userID = try JSONDecoder().decode(UserIdGetter.self, from: data)
-                    self.userId = userID.user.id
-                } catch {
-                    print("Error decoding user: \(error)")
-                    completion(.failure(.noDecode))
                 }
                 
             }
@@ -131,11 +131,12 @@ class PlantController {
         guard let id = userId else { return }
         
         let requestURL = plantsURL.appendingPathComponent("\(id)")
+        print(requestURL.absoluteString)
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        print()
         do {
             guard let representation = plant.plantRepresentation else {
                 completion(.failure(.noRep))
@@ -149,11 +150,15 @@ class PlantController {
                 return
             }
             
-            let task = URLSession.shared.dataTask(with: request) { (_, _, error) in
+            let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
                 if let error = error {
                     print("Error PUTting task to server: \(error)")
                     completion(.failure(.tryAgain))
                     return
+                }
+                
+                if let response = response {
+                    print(response)
                 }
                 
                 completion(.success(true))

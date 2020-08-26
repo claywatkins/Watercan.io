@@ -30,6 +30,7 @@ class PlantTableViewController: UIViewController {
     let tableView = UITableView()
     let popUpView = Popup()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    let plantController = PlantController.shared
     
     // MARK: - TODO:
     // Delete this once we have data to pull from.
