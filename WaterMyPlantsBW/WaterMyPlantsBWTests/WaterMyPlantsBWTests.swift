@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import WaterMyPlantsBW
 
 class WaterMyPlantsBWTests: XCTestCase {
@@ -41,9 +42,26 @@ class WaterMyPlantsBWTests: XCTestCase {
 
     // PlantController
     func testFetchEntriesFromServer() {
+        let plantController = PlantController()
+            XCTAssertNotNil(plantController)
 
+            let fetchedResultsController: NSFetchedResultsController<Plant> = {
+                let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+                fetchRequest.sortDescriptors = [
+                    NSSortDescriptor(key: "nickname", ascending: true)
+                ]
+                let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                     managedObjectContext: CoreDataStack.shared.mainContext,
+                                                     sectionNameKeyPath: "nickname",
+                                                     cacheName: nil)
+                frc.delegate = self as? NSFetchedResultsControllerDelegate
+                try? frc.performFetch()
+                return frc
+            }()
+            XCTAssertNotNil(fetchedResultsController.object(at: [0]))
+        }
         
-    }
+    
 
     // PlantTableViewHelper
     func testCancelTapped() {
@@ -58,7 +76,7 @@ class WaterMyPlantsBWTests: XCTestCase {
         XCTAssertNotNil(newPlant.h2ofrequency)
     }
 
-    func testConvertPlantToRep() {
+    func testConvertPlantToRepresentation() {
            let testPlant = Plant(nickname: "Fiddlehead", species: "Fern", h2ofrequency: "Daily")
            let representation = testPlant.plantRepresentation
            XCTAssertNotNil(representation)
