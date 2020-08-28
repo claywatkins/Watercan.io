@@ -58,7 +58,7 @@ class WaterMyPlantsBWTests: XCTestCase {
                 try? frc.performFetch()
                 return frc
             }()
-            XCTAssertNotNil(fetchedResultsController.object(at: [0]))
+            XCTAssertNotNil(fetchedResultsController.object(at: [1]))
         }
         
     

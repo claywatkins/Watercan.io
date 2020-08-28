@@ -9,35 +9,44 @@
 import XCTest
 
 class WaterMyPlantsBWUITests: XCTestCase {
+let app = XCUIApplication()
 
-//    override func setUpWithError() throws {
-//        // Put setup code here. This method is called before the invocation of each test method in the class.
-//
-//        // In UI tests it is usually best to stop immediately when a failure occurs.
-//        continueAfterFailure = false
-//
-//        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-//    }
-//
-//    override func tearDownWithError() throws {
-//        // Put teardown code here. This method is called after the invocation of each test method in the class.
-//    }
-//
-//    func testExample() throws {
-//        // UI tests must launch the application that they test.
-//        let app = XCUIApplication()
-//        app.launch()
-//
-//        // Use recording to get started writing UI tests.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//    }
-//
-//    func testLaunchPerformance() throws {
-//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-//            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-//                XCUIApplication().launch()
-//            }
-//        }
-//    }
+    func testAddPlantButtons() {
+        app.launch()
+
+
+        let app = XCUIApplication()
+        app.navigationBars["Plants"].buttons["Add"].tap()
+
+
+        let enterPlantNameTextField = app.textFields["Enter plant name"]
+            enterPlantNameTextField.tap()
+            enterPlantNameTextField.typeText("Tree")
+
+        let enterPlantSpeciesTextField = app.textFields["Enter plant species"]
+            enterPlantSpeciesTextField.tap()
+            enterPlantSpeciesTextField.typeText("Birch")
+
+        let enterPlantWaterFrequencyTextField = app.textFields["Enter plant water frequency"]
+        enterPlantWaterFrequencyTextField.tap()
+        enterPlantWaterFrequencyTextField.typeText("Twice Weekly")
+        app/*@START_MENU_TOKEN@*/.buttons["Done"]/*[[".keyboards",".buttons[\"done\"]",".buttons[\"Done\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        app.buttons["Add plant to collection"].tap()
+
+
+        let cellName = app.tables.cells.staticTexts["Tree"]
+        XCTAssert(cellName.exists)
+
+//        let cellSpecies = app.tables.cells.staticTexts["Birch]",
+//        XCTAssert(cellSpecies.exists)
+
+    }
+
+
+
+
+
+
+
 }
