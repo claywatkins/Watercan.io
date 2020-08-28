@@ -79,7 +79,6 @@ extension PlantTableViewController{
         popUpView.backgroundColor = .white
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
