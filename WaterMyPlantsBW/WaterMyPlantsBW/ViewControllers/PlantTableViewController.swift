@@ -17,6 +17,7 @@ class PlantTableViewController: UIViewController {
     let popUpView = Popup()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let plantController = PlantController.shared
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "nickname", ascending: true)]
@@ -46,6 +47,9 @@ class PlantTableViewController: UIViewController {
         setupTableViewCell()
         setupViewAsthetics()
         setUpPopUpView()
+        popUpView.plantNameTextfield.delegate = self
+        popUpView.plantSpeciesTextfield.delegate = self
+        popUpView.waterFrequencyTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
