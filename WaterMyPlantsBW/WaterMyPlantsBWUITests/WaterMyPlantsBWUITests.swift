@@ -11,6 +11,26 @@ import XCTest
 class WaterMyPlantsBWUITests: XCTestCase {
 let app = XCUIApplication()
 
+    func testSignUpSignIn() {
+           
+    }
+    
+    func testRefreshTableView() {
+        
+    }
+    
+    func testTapOnDetail() {
+        
+    }
+    
+    func testDeletePlant() {
+        
+    }
+    
+    func testCancelAddPlant() {
+        
+    }
+    
     func testAddPlantButtons() {
         app.launch()
 
@@ -43,7 +63,7 @@ let app = XCUIApplication()
 
     }
 
-
+   
 
 
 
