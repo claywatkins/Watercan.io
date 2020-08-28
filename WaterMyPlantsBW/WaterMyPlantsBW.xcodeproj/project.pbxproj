@@ -26,8 +26,28 @@
 		0BB2F9ED24F5AA5300304B89 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EC24F5AA5300304B89 /* Bearer.swift */; };
 		0BB2F9EF24F5AF0500304B89 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EE24F5AF0500304B89 /* PlantController.swift */; };
 		0BB2F9F124F607B400304B89 /* UserIDGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9F024F607B400304B89 /* UserIDGetter.swift */; };
+		E3D89D6424F766C900E90FC5 /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */; };
+		3CFAF59B24F737AA005B5891 /* WaterMyPlantsBWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAF59A24F737AA005B5891 /* WaterMyPlantsBWTests.swift */; };
+		3CFAF5A924F737E8005B5891 /* WaterMyPlantsBWUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAF5A824F737E8005B5891 /* WaterMyPlantsBWUITests.swift */; };
 		E3679C0924EF727D00A91940 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3679C0824EF727D00A91940 /* TabBar.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CFAF59D24F737AA005B5891 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B3D1BD424EE09C60093EAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B3D1BDB24EE09C60093EAB1;
+			remoteInfo = WaterMyPlantsBW;
+		};
+		3CFAF5AB24F737E8005B5891 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B3D1BD424EE09C60093EAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B3D1BDB24EE09C60093EAB1;
+			remoteInfo = WaterMyPlantsBW;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0B3D1BDC24EE09C60093EAB1 /* WaterMyPlantsBW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterMyPlantsBW.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,11 +71,32 @@
 		0BB2F9EC24F5AA5300304B89 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		0BB2F9EE24F5AF0500304B89 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
 		0BB2F9F024F607B400304B89 /* UserIDGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIDGetter.swift; sourceTree = "<group>"; };
+		E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
+		3CFAF59824F737AA005B5891 /* WaterMyPlantsBWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterMyPlantsBWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CFAF59A24F737AA005B5891 /* WaterMyPlantsBWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMyPlantsBWTests.swift; sourceTree = "<group>"; };
+		3CFAF59C24F737AA005B5891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CFAF5A624F737E8005B5891 /* WaterMyPlantsBWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterMyPlantsBWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CFAF5A824F737E8005B5891 /* WaterMyPlantsBWUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMyPlantsBWUITests.swift; sourceTree = "<group>"; };
+		3CFAF5AA24F737E8005B5891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3679C0824EF727D00A91940 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0B3D1BD924EE09C60093EAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CFAF59524F737AA005B5891 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CFAF5A324F737E8005B5891 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				0B3D1BDE24EE09C60093EAB1 /* WaterMyPlantsBW */,
+				3CFAF59924F737AA005B5891 /* WaterMyPlantsBWTests */,
+				3CFAF5A724F737E8005B5891 /* WaterMyPlantsBWUITests */,
 				0B3D1BDD24EE09C60093EAB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				0B3D1BDC24EE09C60093EAB1 /* WaterMyPlantsBW.app */,
+				3CFAF59824F737AA005B5891 /* WaterMyPlantsBWTests.xctest */,
+				3CFAF5A624F737E8005B5891 /* WaterMyPlantsBWUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,13 +199,31 @@
 			path = CoreDataStack;
 			sourceTree = "<group>";
 		};
+		3CFAF59924F737AA005B5891 /* WaterMyPlantsBWTests */ = {
+			isa = PBXGroup;
+			children = (
+				3CFAF59A24F737AA005B5891 /* WaterMyPlantsBWTests.swift */,
+				3CFAF59C24F737AA005B5891 /* Info.plist */,
+			);
+			path = WaterMyPlantsBWTests;
+			sourceTree = "<group>";
+		};
+		3CFAF5A724F737E8005B5891 /* WaterMyPlantsBWUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3CFAF5A824F737E8005B5891 /* WaterMyPlantsBWUITests.swift */,
+				3CFAF5AA24F737E8005B5891 /* Info.plist */,
+			);
+			path = WaterMyPlantsBWUITests;
+			sourceTree = "<group>";
+		};
 		E3679C0724EF71F300A91940 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E3679C0824EF727D00A91940 /* TabBar.swift */,
 				0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */,
 				0B7686E224F35AF8001B001E /* Popup.swift */,
 				0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */,
+				E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +248,42 @@
 			productReference = 0B3D1BDC24EE09C60093EAB1 /* WaterMyPlantsBW.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3CFAF59724F737AA005B5891 /* WaterMyPlantsBWTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CFAF5A124F737AA005B5891 /* Build configuration list for PBXNativeTarget "WaterMyPlantsBWTests" */;
+			buildPhases = (
+				3CFAF59424F737AA005B5891 /* Sources */,
+				3CFAF59524F737AA005B5891 /* Frameworks */,
+				3CFAF59624F737AA005B5891 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CFAF59E24F737AA005B5891 /* PBXTargetDependency */,
+			);
+			name = WaterMyPlantsBWTests;
+			productName = WaterMyPlantsBWTests;
+			productReference = 3CFAF59824F737AA005B5891 /* WaterMyPlantsBWTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3CFAF5A524F737E8005B5891 /* WaterMyPlantsBWUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CFAF5AD24F737E8005B5891 /* Build configuration list for PBXNativeTarget "WaterMyPlantsBWUITests" */;
+			buildPhases = (
+				3CFAF5A224F737E8005B5891 /* Sources */,
+				3CFAF5A324F737E8005B5891 /* Frameworks */,
+				3CFAF5A424F737E8005B5891 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CFAF5AC24F737E8005B5891 /* PBXTargetDependency */,
+			);
+			name = WaterMyPlantsBWUITests;
+			productName = WaterMyPlantsBWUITests;
+			productReference = 3CFAF5A624F737E8005B5891 /* WaterMyPlantsBWUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,6 +296,14 @@
 				TargetAttributes = {
 					0B3D1BDB24EE09C60093EAB1 = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					3CFAF59724F737AA005B5891 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 0B3D1BDB24EE09C60093EAB1;
+					};
+					3CFAF5A524F737E8005B5891 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 0B3D1BDB24EE09C60093EAB1;
 					};
 				};
 			};
@@ -214,6 +321,8 @@
 			projectRoot = "";
 			targets = (
 				0B3D1BDB24EE09C60093EAB1 /* WaterMyPlantsBW */,
+				3CFAF59724F737AA005B5891 /* WaterMyPlantsBWTests */,
+				3CFAF5A524F737E8005B5891 /* WaterMyPlantsBWUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +335,20 @@
 				0B3D1BEC24EE09C90093EAB1 /* LaunchScreen.storyboard in Resources */,
 				0B3D1BE924EE09C90093EAB1 /* Assets.xcassets in Resources */,
 				0B3D1BE724EE09C60093EAB1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CFAF59624F737AA005B5891 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CFAF5A424F737E8005B5891 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,14 +372,43 @@
 				0B87FD8F24F4E08000520F1D /* PlantDetailViewController.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 				0BB2F9E724F5A84600304B89 /* Plant+Convenience.swift in Sources */,
-				E3679C0924EF727D00A91940 /* TabBar.swift in Sources */,
+				E3D89D6424F766C900E90FC5 /* ColorsHelper.swift in Sources */,
 				0BB2F9F124F607B400304B89 /* UserIDGetter.swift in Sources */,
 				0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */,
 				0BB2F9E924F5A8C800304B89 /* PlantRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CFAF59424F737AA005B5891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CFAF59B24F737AA005B5891 /* WaterMyPlantsBWTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CFAF5A224F737E8005B5891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CFAF5A924F737E8005B5891 /* WaterMyPlantsBWUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CFAF59E24F737AA005B5891 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B3D1BDB24EE09C60093EAB1 /* WaterMyPlantsBW */;
+			targetProxy = 3CFAF59D24F737AA005B5891 /* PBXContainerItemProxy */;
+		};
+		3CFAF5AC24F737E8005B5891 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B3D1BDB24EE09C60093EAB1 /* WaterMyPlantsBW */;
+			targetProxy = 3CFAF5AB24F737E8005B5891 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0B3D1BE524EE09C60093EAB1 /* Main.storyboard */ = {
@@ -426,6 +578,80 @@
 			};
 			name = Release;
 		};
+		3CFAF59F24F737AA005B5891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WaterMyPlantsBWTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Cygnus-Enterprises.WaterMyPlantsBWTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterMyPlantsBW.app/WaterMyPlantsBW";
+			};
+			name = Debug;
+		};
+		3CFAF5A024F737AA005B5891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WaterMyPlantsBWTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Cygnus-Enterprises.WaterMyPlantsBWTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterMyPlantsBW.app/WaterMyPlantsBW";
+			};
+			name = Release;
+		};
+		3CFAF5AE24F737E8005B5891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WaterMyPlantsBWUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Cygnus-Enterprises.WaterMyPlantsBWUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WaterMyPlantsBW;
+			};
+			name = Debug;
+		};
+		3CFAF5AF24F737E8005B5891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WaterMyPlantsBWUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Cygnus-Enterprises.WaterMyPlantsBWUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WaterMyPlantsBW;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +669,24 @@
 			buildConfigurations = (
 				0B3D1BF124EE09C90093EAB1 /* Debug */,
 				0B3D1BF224EE09C90093EAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CFAF5A124F737AA005B5891 /* Build configuration list for PBXNativeTarget "WaterMyPlantsBWTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CFAF59F24F737AA005B5891 /* Debug */,
+				3CFAF5A024F737AA005B5891 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CFAF5AD24F737E8005B5891 /* Build configuration list for PBXNativeTarget "WaterMyPlantsBWUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CFAF5AE24F737E8005B5891 /* Debug */,
+				3CFAF5AF24F737E8005B5891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
