@@ -29,6 +29,7 @@ class PlantDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         guard let name = plant?.nickname else { return }
         navigationItem.title = "\(name)"
         addSubviews()
@@ -60,7 +61,7 @@ class PlantDetailViewController: UIViewController {
         
         // Constraints
         plantImage.translatesAutoresizingMaskIntoConstraints = false
-        plantImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
+        plantImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         plantImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:60).isActive = true
         plantImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
         plantImage.widthAnchor.constraint(equalTo: plantImage.heightAnchor, multiplier: 1/1).isActive = true
@@ -123,8 +124,8 @@ class PlantDetailViewController: UIViewController {
         stack.spacing = 10
         stack.distribution = .fillEqually
         stack.topAnchor.constraint(equalTo: plantImage.bottomAnchor, constant: 20).isActive = true
-        stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
     
 }

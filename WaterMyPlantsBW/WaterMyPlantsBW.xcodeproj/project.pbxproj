@@ -26,7 +26,7 @@
 		0BB2F9ED24F5AA5300304B89 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EC24F5AA5300304B89 /* Bearer.swift */; };
 		0BB2F9EF24F5AF0500304B89 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9EE24F5AF0500304B89 /* PlantController.swift */; };
 		0BB2F9F124F607B400304B89 /* UserIDGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2F9F024F607B400304B89 /* UserIDGetter.swift */; };
-		E3679C0924EF727D00A91940 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3679C0824EF727D00A91940 /* TabBar.swift */; };
+		E3D89D6424F766C900E90FC5 /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		0BB2F9EC24F5AA5300304B89 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		0BB2F9EE24F5AF0500304B89 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
 		0BB2F9F024F607B400304B89 /* UserIDGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIDGetter.swift; sourceTree = "<group>"; };
-		E3679C0824EF727D00A91940 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,10 +157,10 @@
 		E3679C0724EF71F300A91940 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E3679C0824EF727D00A91940 /* TabBar.swift */,
 				0B7822FF24F0BC2C006E6CF8 /* PlantTableViewCell.swift */,
 				0B7686E224F35AF8001B001E /* Popup.swift */,
 				0B87FD8C24F49FE600520F1D /* PlantTableViewHelper.swift */,
+				E3D89D6324F766C900E90FC5 /* ColorsHelper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 				0B87FD8F24F4E08000520F1D /* PlantDetailViewController.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 				0BB2F9E724F5A84600304B89 /* Plant+Convenience.swift in Sources */,
-				E3679C0924EF727D00A91940 /* TabBar.swift in Sources */,
+				E3D89D6424F766C900E90FC5 /* ColorsHelper.swift in Sources */,
 				0BB2F9F124F607B400304B89 /* UserIDGetter.swift in Sources */,
 				0B87FD8B24F49DF900520F1D /* PlantTableViewController.swift in Sources */,
 				0BB2F9E924F5A8C800304B89 /* PlantRepresentation.swift in Sources */,
