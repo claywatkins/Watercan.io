@@ -17,6 +17,10 @@
 		7CA424D924F0A03200392C70 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424D824F0A03200392C70 /* User.swift */; };
 		7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DC24F0A12F00392C70 /* SignInViewController.swift */; };
 		7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA424DE24F0A3D300392C70 /* PlantController.swift */; };
+		7CC216E124F8915E00264166 /* UserIDGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC216E024F8915E00264166 /* UserIDGetter.swift */; };
+		7CC216E324F8919800264166 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC216E224F8919800264166 /* CoreDataStack.swift */; };
+		7CC216E524F891C200264166 /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC216E424F891C200264166 /* PlantRepresentation.swift */; };
+		7CC216E724F8936600264166 /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC216E624F8936600264166 /* Plant+Convenience.swift */; };
 		7CFB5D8824F4952A006455EE /* Plants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		7CA424D824F0A03200392C70 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7CA424DC24F0A12F00392C70 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7CA424DE24F0A3D300392C70 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlantController.swift; path = WaterMyPlantsBW/ViewControllers/PlantController.swift; sourceTree = SOURCE_ROOT; };
+		7CC216E024F8915E00264166 /* UserIDGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIDGetter.swift; sourceTree = "<group>"; };
+		7CC216E224F8919800264166 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = WaterMyPlantsBW/Model/CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
+		7CC216E424F891C200264166 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
+		7CC216E624F8936600264166 /* Plant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
 		7CFB5D8724F4952A006455EE /* Plants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plants.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +86,8 @@
 		0B12745C24EE11CD0092DEF4 /* CoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
+				7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */,
+				7CC216E224F8919800264166 /* CoreDataStack.swift */,
 			);
 			path = CoreDataStack;
 			sourceTree = "<group>";
@@ -86,8 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				7CA424D624F09FE600392C70 /* Bearer.swift */,
+				7CC216E024F8915E00264166 /* UserIDGetter.swift */,
 				7CA424D824F0A03200392C70 /* User.swift */,
-				7CFB5D8624F4952A006455EE /* Plants.xcdatamodeld */,
+				7CC216E424F891C200264166 /* PlantRepresentation.swift */,
+				7CC216E624F8936600264166 /* Plant+Convenience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,11 +214,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA424DD24F0A12F00392C70 /* SignInViewController.swift in Sources */,
+				7CC216E524F891C200264166 /* PlantRepresentation.swift in Sources */,
 				7CFB5D8824F4952A006455EE /* Plants.xcdatamodeld in Sources */,
 				7CA424D724F09FE600392C70 /* Bearer.swift in Sources */,
 				7CA424DF24F0A3D300392C70 /* PlantController.swift in Sources */,
+				7CC216E124F8915E00264166 /* UserIDGetter.swift in Sources */,
+				7CC216E324F8919800264166 /* CoreDataStack.swift in Sources */,
 				0B3D1BE424EE09C60093EAB1 /* ViewController.swift in Sources */,
 				0B3D1BE024EE09C60093EAB1 /* AppDelegate.swift in Sources */,
+				7CC216E724F8936600264166 /* Plant+Convenience.swift in Sources */,
 				7CA424D924F0A03200392C70 /* User.swift in Sources */,
 				0B3D1BE224EE09C60093EAB1 /* SceneDelegate.swift in Sources */,
 			);
