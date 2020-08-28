@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-extension PlantTableViewController{
+extension PlantTableViewController {
     
     // MARK: - Helper Methods
     func createTableView() {        
@@ -37,14 +37,14 @@ extension PlantTableViewController{
     }
     
     func setupViewAsthetics() {
-        overrideUserInterfaceStyle = .dark
-        tableView.backgroundColor = .systemGreen
+        // overrideUserInterfaceStyle = .dark
+        tableView.backgroundColor = .white
         navigationItem.title = "Plants"
     }
     
     func setUpNavBar() {
         navigationController?.navigationBar.barTintColor = .systemGray6
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
@@ -76,14 +76,13 @@ extension PlantTableViewController{
     func setUpPopUpView() {
         createBlurView()
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.7)
-        popUpView.backgroundColor = .white
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
         //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
-        popUpView.backgroundColor = .lightGray
+        popUpView.backgroundColor = UIColor(red: 20, green: 68, blue: 20)
     }
     
     /// Animates a view to scale in and display

@@ -242,6 +242,7 @@ class PlantController {
     func updatePlants(with representations: [PlantRepresentation]) throws {
         let context = CoreDataStack.shared.container.newBackgroundContext()
         
+        // TODO: Check filters?
         let identifiersToFetch = representations.compactMap({$0.id})
         
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
