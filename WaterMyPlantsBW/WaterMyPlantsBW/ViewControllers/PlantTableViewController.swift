@@ -35,27 +35,33 @@ class PlantTableViewController: UIViewController {
         return frc
     }()
     
-    
     // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
+        setUpNavBar()
         createTableView()
         setUpTableView()
         setupTableViewCell()
         setupViewAsthetics()
-        setUpNavBar()
-        //    addPlant()
         setUpPopUpView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if plantController.bearer == nil {
+            let destinationVC = LoginViewController()
+            destinationVC.modalPresentationStyle = .fullScreen
+            self.present(destinationVC, animated: true, completion: nil)
+        }
         tableView.reloadData()
     }
     
 }
+
 //MARK: - TableView Data Source
+
 extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -93,7 +99,9 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destinationVC = PlantDetailViewController()
         destinationVC.plant = self.fetchedResultsController.object(at: indexPath)
-        navigationController?.pushViewController(destinationVC, animated: true)
+        destinationVC.modalPresentationStyle = .automatic
+        self.navigationController?.present(destinationVC, animated: true, completion: nil)
+        // navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
 
