@@ -26,6 +26,8 @@ class PlantTableViewCell: UITableViewCell {
         setNameLabelConstraints()
         setDateLabelConstraints()
     }
+    
+    @available(*, unavailable)
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -59,7 +61,7 @@ class PlantTableViewCell: UITableViewCell {
         plantImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         plantImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         plantImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        plantImageView.widthAnchor.constraint(equalTo: plantImageView.heightAnchor, multiplier: 1/1).isActive = true
+        plantImageView.widthAnchor.constraint(equalTo: plantImageView.heightAnchor, multiplier: 1 / 1).isActive = true
     }
     
     private func setNameLabelConstraints() {

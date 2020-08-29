@@ -19,6 +19,10 @@ disabled_rules: # rule identifiers to exclude from running
   - line_length
   - force_try
   - force_cast
+  - weak_delegate
+  - convenience_type
+  - function_body_length
+  
 excluded: # paths to ignore during linting.
   - Carthage
   - Swift Style Guide.playground

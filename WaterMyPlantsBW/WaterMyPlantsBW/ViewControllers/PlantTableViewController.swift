@@ -28,7 +28,7 @@ class PlantTableViewController: UIViewController {
                                              cacheName: nil)
         frc.delegate = self
         
-        do{
+        do {
             try frc.performFetch()
         } catch {
             print("Error fetching")
@@ -64,15 +64,15 @@ class PlantTableViewController: UIViewController {
     
 }
 
-//MARK: - TableView Data Source
+// MARK: - TableView Data Source
 
 extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
+         self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as? PlantTableViewCell else { return UITableViewCell() }
         let plants = self.fetchedResultsController.object(at: indexPath)
         cell.plantNameLabel.text = plants.nickname
         cell.plantLastWatered.text = plants.h2ofrequency
@@ -105,7 +105,5 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
         destinationVC.plant = self.fetchedResultsController.object(at: indexPath)
         destinationVC.modalPresentationStyle = .automatic
         self.navigationController?.present(destinationVC, animated: true, completion: nil)
-        // navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
-
