@@ -115,7 +115,7 @@ class Popup: UIView{
         waterFrequencyTextField.returnKeyType = UIReturnKeyType.done
         waterFrequencyTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         waterFrequencyTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        
+
         
         addPlantButton.setTitle("Add plant to collection", for: .normal)
         addPlantButton.backgroundColor = .systemBlue
@@ -149,6 +149,7 @@ class Popup: UIView{
     @objc private func cancelButtonTapped() {
         delegate?.cancelTapped()
     }
+
 }
 
 // MARK: - Extension
@@ -177,5 +178,4 @@ extension Popup: UIImagePickerControllerDelegate, UINavigationControllerDelegate
         addPlantImageView.image = image
     }
 }
-
 

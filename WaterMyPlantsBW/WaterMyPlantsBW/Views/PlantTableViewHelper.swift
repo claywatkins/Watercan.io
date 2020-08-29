@@ -78,7 +78,6 @@ extension PlantTableViewController {
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.7)
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
@@ -214,5 +213,11 @@ extension PlantTableViewController: NSFetchedResultsControllerDelegate {
 extension PlantTableViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+extension PlantTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
