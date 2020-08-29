@@ -35,7 +35,6 @@ class WaterMyPlantsBWTests: XCTestCase {
     }
 
 
-
     func testCancelSignUpNotification() {
 
     }
