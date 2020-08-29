@@ -50,7 +50,7 @@ class PlantTableViewController: UIViewController {
         popUpView.plantNameTextfield.delegate = self
         popUpView.plantSpeciesTextfield.delegate = self
         popUpView.waterFrequencyTextField.delegate = self
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     override func viewWillAppear(_ animated: Bool) {
