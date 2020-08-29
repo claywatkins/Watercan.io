@@ -147,8 +147,8 @@ class LoginViewController: UIViewController {
         
         let credits = """
         ©2020 Lambda Lads\n \
-        Clayton Watkins, Bronson Mullens, Ian Person\n \
-        Bryson Person, and Ron Person
+        Clayton Watkins, Bronson Mullens, Ian French\n \
+        Bryson Saclausa, and Ron Huston Jr
         """
         creditsLabel.text = credits
         creditsLabel.numberOfLines = 3
