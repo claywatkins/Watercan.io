@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
     var passwordTextField: UITextField = UITextField()
     var phoneNumberTextField: UITextField = UITextField()
     
+    var creditsLabel: UILabel = UILabel()
+    
     var loginTypeSegmentedControl: UISegmentedControl = {
         let items = [LoginType.signUp.rawValue, LoginType.signIn.rawValue]
         let segmentedControl = UISegmentedControl(items: items)
@@ -45,7 +47,8 @@ class LoginViewController: UIViewController {
             let destinationVC = PlantTableViewController()
             navigationController?.pushViewController(destinationVC, animated: true)
         }
-        view.backgroundColor = .white
+        view.backgroundColor = ColorsHelper.mintGreen
+        navigationController?.navigationBar.barTintColor = ColorsHelper.mintGreen
         setUpViews()
     }
     
@@ -58,6 +61,7 @@ class LoginViewController: UIViewController {
         view.addSubview(phoneNumberTextField)
         view.addSubview(loginTypeSegmentedControl)
         view.addSubview(signInButton)
+        view.addSubview(creditsLabel)
         
         appBannerView.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +69,7 @@ class LoginViewController: UIViewController {
         phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTypeSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         signInButton.translatesAutoresizingMaskIntoConstraints = false
+        creditsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             appBannerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 128),
@@ -89,7 +94,14 @@ class LoginViewController: UIViewController {
             signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
             signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signInButton.widthAnchor.constraint(equalToConstant: 96),
+            
+            creditsLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48),
+            creditsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+        
+        // Overlays image with a set UIColor
+        appBannerView.image = appBannerView.image?.withRenderingMode(.alwaysTemplate)
+        appBannerView.tintColor = ColorsHelper.darkGreen
         
         loginTypeSegmentedControl.selectedSegmentIndex = 0
         loginTypeSegmentedControl.addTarget(self, action: #selector(signInTypeChanged), for: .valueChanged)
@@ -128,10 +140,20 @@ class LoginViewController: UIViewController {
         signInButton.backgroundColor = .none
         signInButton.setTitle("Sign Up", for: .normal)
         signInButton.layer.borderWidth = 2.0
-        signInButton.layer.borderColor = ColorsHelper.lightGreen.cgColor
-        signInButton.setTitleColor(ColorsHelper.lightGreen, for: .normal)
+        signInButton.layer.borderColor = ColorsHelper.darkGreen.cgColor
+        signInButton.setTitleColor(ColorsHelper.darkGreen, for: .normal)
         signInButton.layer.cornerRadius = 6.0
         signInButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        let credits = """
+        ©2020 Lambda Lads\n \
+        Clayton Watkins, Bronson Mullens, Ian Person\n \
+        Bryson Person, and Ron Person
+        """
+        creditsLabel.text = credits
+        creditsLabel.numberOfLines = 3
+        creditsLabel.textAlignment = .center
+        creditsLabel.font = creditsLabel.font.withSize(12)
     }
     
     // MARK: - OBJC Functions

@@ -11,7 +11,11 @@ import UIKit
 class ColorsHelper {
     
     static let lightGreen: UIColor = UIColor(displayP3Red: 0.2353, green: 0.5412, blue: 0.0863, alpha: 1)
-    static let darkGreen: UIColor = UIColor(displayP3Red: 0.0784, green: 0.2667, blue: 0.0784, alpha: 1)
+    static let darkGreen: UIColor = UIColor(red: 141, green: 181, blue: 128)
+    static let honeydew: UIColor = UIColor(red: 241, green: 255, blue: 231)
+    static let mintGreen: UIColor = UIColor(red: 209, green: 227, blue: 221)
+    static let laurelGreen: UIColor = UIColor(red: 194, green: 207, blue: 178)
+    static let battleshipGrey: UIColor = UIColor(red: 126, green: 137, blue: 135)
     
 }
 

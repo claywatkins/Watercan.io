@@ -60,9 +60,9 @@ class Popup: UIView{
     func configureAddImageButton() {
         // Configure
         addPlantImageButton.setTitle("Add an image for your plant", for: .normal)
-        addPlantImageButton.backgroundColor = .systemBlue
+        addPlantImageButton.backgroundColor = ColorsHelper.mintGreen
         addPlantImageButton.layer.cornerRadius = 15
-        addPlantImageButton.setTitleColor(UIColor.white, for: .normal)
+        addPlantImageButton.setTitleColor(.black, for: .normal)
         addPlantImageButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         addPlantImageButton.addTarget(self, action: #selector(addImageTapped), for: .touchUpInside)
         
@@ -118,16 +118,18 @@ class Popup: UIView{
 
         
         addPlantButton.setTitle("Add plant to collection", for: .normal)
-        addPlantButton.backgroundColor = .systemBlue
+        addPlantButton.backgroundColor = ColorsHelper.mintGreen
+        addPlantButton.titleLabel?.textColor = .black
         addPlantButton.layer.cornerRadius = 15
-        addPlantButton.setTitleColor(UIColor.white, for: .normal)
+        addPlantButton.setTitleColor(.black, for: .normal)
         addPlantButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         addPlantButton.addTarget(self, action: #selector(addPlant), for: .touchUpInside)
         
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.backgroundColor = .systemBlue
+        cancelButton.backgroundColor = ColorsHelper.mintGreen
+        cancelButton.titleLabel?.textColor = .black
         cancelButton.layer.cornerRadius = 15
-        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
         cancelButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         
