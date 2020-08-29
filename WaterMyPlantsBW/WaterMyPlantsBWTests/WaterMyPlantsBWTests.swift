@@ -12,13 +12,10 @@ import CoreData
 
 class WaterMyPlantsBWTests: XCTestCase {
 
-    var newUser: String {
-        return "Ian1"
-    }
 
     func testSignUp() {
         let plantController = PlantController()
-               let testUser1 = User(username: newUser, password: "ian123", phonenumber: "121-212-1212")
+               let testUser1 = User(username: "ian1", password: "ian123", phonenumber: "121-212-1212")
                print("User \(testUser1.username) has been created ")
                plantController.signUp(with: testUser1, completion: { error in
                     XCTAssertNil(error)
@@ -62,7 +59,7 @@ class WaterMyPlantsBWTests: XCTestCase {
             let fetchedResultsController: NSFetchedResultsController<Plant> = {
                 let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
                 fetchRequest.sortDescriptors = [
-                    NSSortDescriptor(key: "nickname", ascending: true)
+                    NSSortDescriptor(key: "nickname", ascending: false)
                 ]
                 let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                      managedObjectContext: CoreDataStack.shared.mainContext,
@@ -72,7 +69,7 @@ class WaterMyPlantsBWTests: XCTestCase {
                 try? frc.performFetch()
                 return frc
             }()
-            XCTAssertNotNil(fetchedResultsController.object(at: [0]))
+            XCTAssertNotNil(fetchedResultsController.object)
         }
 
     // PlantTableViewHelper
@@ -122,6 +119,13 @@ class WaterMyPlantsBWTests: XCTestCase {
         XCTAssertFalse(mockPlants.isEmpty)
         mockPlants.removeAll()
         XCTAssert(mockPlants.isEmpty)
-        // TODO: May want to refactor to save plant to core data. Unsure how to do so for a unit test only.
+    }
+
+
+    func testCreateNewUser() {
+        let newUser = User(username: "M.Jackson", password: "ABC-123", phonenumber: "555-243-1999")
+               XCTAssertNotNil(newUser.phonenumber)
+               XCTAssertNotNil(newUser.username)
+               XCTAssertNotNil(newUser.password)
     }
 }

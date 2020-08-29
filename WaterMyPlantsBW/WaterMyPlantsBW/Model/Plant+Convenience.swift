@@ -15,7 +15,7 @@ extension Plant {
     var plantRepresentation: PlantRepresentation? {
         guard let nickname = nickname,
             let species = species,
-            let h20Frequency = h2ofrequency else { return nil}
+            let h20Frequency = h2ofrequency else { return nil }
         
         return PlantRepresentation(nickname: nickname, species: species, h2ofrequency: h20Frequency)
     }
@@ -34,8 +34,6 @@ extension Plant {
     
     // Turning a PlantRepresentation into a Plant object for saving to CoreData
     @discardableResult convenience init?(plantRepresentartion: PlantRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        
-
         
         self.init(nickname: plantRepresentartion.nickname,
                   species: plantRepresentartion.species,

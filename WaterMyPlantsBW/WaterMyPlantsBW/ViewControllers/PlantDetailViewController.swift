@@ -11,6 +11,7 @@ import UIKit
 class PlantDetailViewController: UIViewController {
     
     // MARK: - Properties
+    let plantTitleLabel = UILabel()
     let plantImage = UIImageView()
     let nameLabel = UILabel()
     let plantNameTextfield = UITextField()
@@ -20,8 +21,8 @@ class PlantDetailViewController: UIViewController {
     let plantWateringFrequencyTextfield = UITextField()
     let stack = UIStackView()
   
-    var plant: Plant?{
-        didSet{
+    var plant: Plant? {
+        didSet {
             updateViews()
         }
     }
@@ -34,8 +35,10 @@ class PlantDetailViewController: UIViewController {
         navigationItem.title = "\(name)"
         addSubviews()
         updateViews()
+        configurePlantTitleLabel()
         configurePlantImage()
         configureStackView()
+        view.backgroundColor = ColorsHelper.mintGreen
     }
     
     // MARK: - Methods
@@ -50,8 +53,22 @@ class PlantDetailViewController: UIViewController {
     
     // MARK: - Helper Methods
     func addSubviews() {
+        view.addSubview(plantTitleLabel)
         view.addSubview(plantImage)
         view.addSubview(stack)
+    }
+    
+    func configurePlantTitleLabel() {
+        // Configure
+        plantTitleLabel.text = "Plant Information"
+        plantTitleLabel.textColor = .black
+        plantTitleLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        
+        // Constraints
+        plantTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        plantTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        plantTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
     }
     
     func configurePlantImage() {
@@ -62,9 +79,9 @@ class PlantDetailViewController: UIViewController {
         // Constraints
         plantImage.translatesAutoresizingMaskIntoConstraints = false
         plantImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        plantImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:60).isActive = true
+        plantImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60).isActive = true
         plantImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        plantImage.widthAnchor.constraint(equalTo: plantImage.heightAnchor, multiplier: 1/1).isActive = true
+        plantImage.widthAnchor.constraint(equalTo: plantImage.heightAnchor, multiplier: 1 / 1 ).isActive = true
     }
     
     func configureStackView() {
@@ -76,6 +93,19 @@ class PlantDetailViewController: UIViewController {
         stack.addArrangedSubview(frequencyLabel)
         stack.addArrangedSubview(plantWateringFrequencyTextfield)
         // Configure
+        configureStackViewItems()
+        
+        // Constraints
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.distribution = .fillEqually
+        stack.topAnchor.constraint(equalTo: plantImage.bottomAnchor, constant: 20).isActive = true
+        stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+    }
+    
+    private func configureStackViewItems() {
         nameLabel.text = "Name"
         nameLabel.font = nameLabel.font.withSize(25)
         
@@ -117,15 +147,6 @@ class PlantDetailViewController: UIViewController {
         plantWateringFrequencyTextfield.clearButtonMode = UITextField.ViewMode.whileEditing
         plantWateringFrequencyTextfield.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         plantWateringFrequencyTextfield.allowsEditingTextAttributes = false
-        
-        // Constraints
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = 10
-        stack.distribution = .fillEqually
-        stack.topAnchor.constraint(equalTo: plantImage.bottomAnchor, constant: 20).isActive = true
-        stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
     
 }

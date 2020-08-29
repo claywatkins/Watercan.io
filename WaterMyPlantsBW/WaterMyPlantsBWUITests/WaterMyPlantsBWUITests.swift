@@ -39,6 +39,7 @@ class WaterMyPlantsBWUITests: XCTestCase {
     }
     
     func testAddPlantButtons() {
+
         app.launch()
         let app = XCUIApplication()
         app.segmentedControls.buttons["Sign In"].tap()
@@ -174,7 +175,7 @@ class WaterMyPlantsBWUITests: XCTestCase {
         
         app.buttons["Add plant to collection"].tap()
         
-        let WeeklyStaticText = app.tables.cells.containing(.staticText, identifier:"Tree").staticTexts["Weekly"]
+        let WeeklyStaticText = app.tables.cells.containing(.staticText, identifier: "Tree").staticTexts["Weekly"]
         let tablesQuery = XCUIApplication().tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Weekly"]/*[[".cells.staticTexts[\"Weekly\"]",".staticTexts[\"Weekly\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
         tablesQuery/*@START_MENU_TOKEN@*/.buttons["trailing0"]/*[[".cells",".buttons[\"Delete\"]",".buttons[\"trailing0\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -201,7 +202,7 @@ class WaterMyPlantsBWUITests: XCTestCase {
         
         app/*@START_MENU_TOKEN@*/.staticTexts["Sign In"]/*[[".buttons.matching(identifier: \"Sign In\").staticTexts[\"Sign In\"]",".staticTexts[\"Sign In\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        app.buttons.containing(.staticText, identifier:"Sign In").element.tap()
+        app.buttons.containing(.staticText, identifier: "Sign In").element.tap()
         
         let plantsNavigationBar = app.navigationBars["Plants"]
         plantsNavigationBar.buttons["Add"].tap()
@@ -210,12 +211,4 @@ class WaterMyPlantsBWUITests: XCTestCase {
         plantsNavigationBar.staticTexts["Plants"].tap()
         XCTAssert(plantsNavigationBar.staticTexts["Plants"].exists)
     }
-    
-    
-    
-    
-    
-    
-    
-    
 }

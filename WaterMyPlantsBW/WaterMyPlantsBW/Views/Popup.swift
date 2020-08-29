@@ -14,7 +14,7 @@ protocol PlantAddedProtocol {
     func cancelTapped()
 }
 
-class Popup: UIView{
+class Popup: UIView {
     
     // MARK: - Properties
     let addPlantImageView = UIImageView()
@@ -26,12 +26,14 @@ class Popup: UIView{
     let addPlantButton = UIButton()
     let cancelButton = UIButton()
     var delegate: PlantAddedProtocol?
+
     
     // MARK: - REQUIRED Lifecycle
-    override init(frame: CGRect){
+    override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,6 +44,7 @@ class Popup: UIView{
         addSubview(addPlantImageButton)
         addSubview(textFieldStack)
     }
+    
     
     func configurePlantImageView() {
         // Configure
@@ -54,15 +57,15 @@ class Popup: UIView{
         addPlantImageView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
         addPlantImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 63).isActive = true
         addPlantImageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        addPlantImageView.widthAnchor.constraint(equalTo: addPlantImageView.heightAnchor, multiplier: 1/1).isActive = true
+        addPlantImageView.widthAnchor.constraint(equalTo: addPlantImageView.heightAnchor, multiplier: 1 / 1).isActive = true
     }
     
     func configureAddImageButton() {
         // Configure
         addPlantImageButton.setTitle("Add an image for your plant", for: .normal)
-        addPlantImageButton.backgroundColor = .systemBlue
+        addPlantImageButton.backgroundColor = ColorsHelper.mintGreen
         addPlantImageButton.layer.cornerRadius = 15
-        addPlantImageButton.setTitleColor(UIColor.white, for: .normal)
+        addPlantImageButton.setTitleColor(.black, for: .normal)
         addPlantImageButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         addPlantImageButton.addTarget(self, action: #selector(addImageTapped), for: .touchUpInside)
         
@@ -86,6 +89,19 @@ class Popup: UIView{
         textFieldStack.addArrangedSubview(cancelButton)
         
         // Configure
+        configureStackViewItems()
+        
+        // Constraints
+        textFieldStack.translatesAutoresizingMaskIntoConstraints = false
+        textFieldStack.axis = .vertical
+        textFieldStack.spacing = 20
+        textFieldStack.distribution = .fillEqually
+        textFieldStack.topAnchor.constraint(equalTo: addPlantImageButton.bottomAnchor, constant: 15).isActive = true
+        textFieldStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        textFieldStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+    }
+    
+    func configureStackViewItems() {
         plantNameTextfield.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
         plantNameTextfield.placeholder = "Enter plant name"
         plantNameTextfield.font = UIFont.systemFont(ofSize: 15)
@@ -118,27 +134,20 @@ class Popup: UIView{
 
         
         addPlantButton.setTitle("Add plant to collection", for: .normal)
-        addPlantButton.backgroundColor = .systemBlue
+        addPlantButton.backgroundColor = ColorsHelper.mintGreen
+        addPlantButton.titleLabel?.textColor = .black
         addPlantButton.layer.cornerRadius = 15
-        addPlantButton.setTitleColor(UIColor.white, for: .normal)
+        addPlantButton.setTitleColor(.black, for: .normal)
         addPlantButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         addPlantButton.addTarget(self, action: #selector(addPlant), for: .touchUpInside)
         
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.backgroundColor = .systemBlue
+        cancelButton.backgroundColor = ColorsHelper.mintGreen
+        cancelButton.titleLabel?.textColor = .black
         cancelButton.layer.cornerRadius = 15
-        cancelButton.setTitleColor(UIColor.white, for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
         cancelButton.frame = CGRect(x: 0, y: 0, width: 250, height: 25)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        
-        // Constraints
-        textFieldStack.translatesAutoresizingMaskIntoConstraints = false
-        textFieldStack.axis = .vertical
-        textFieldStack.spacing = 20
-        textFieldStack.distribution = .fillEqually
-        textFieldStack.topAnchor.constraint(equalTo: addPlantImageButton.bottomAnchor, constant: 15).isActive = true
-        textFieldStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        textFieldStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
     }
     
     // Passing info back to parent VC
@@ -153,7 +162,7 @@ class Popup: UIView{
 }
 
 // MARK: - Extension
-extension Popup: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+extension Popup: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // allows us to present our photopicker
     func getTopMostViewController() -> UIViewController? {
         var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -164,18 +173,17 @@ extension Popup: UIImagePickerControllerDelegate, UINavigationControllerDelegate
     }
     
     // delegate methods
-    func addPhotoPickerController(){
+    func addPhotoPickerController() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-        let vc =  getTopMostViewController()
+        let vc = getTopMostViewController()
         vc!.present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         addPlantImageView.image = image
     }
 }
-

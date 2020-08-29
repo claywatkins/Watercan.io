@@ -1,0 +1,6 @@
+framework module Pods_WaterMyPlantsBW_WaterMyPlantsBWUITests {
+  umbrella header "Pods-WaterMyPlantsBW-WaterMyPlantsBWUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

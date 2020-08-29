@@ -56,7 +56,7 @@ class PlantController {
             let jsonData = try JSONEncoder().encode(user)
             print(String(data: jsonData, encoding: .utf8)!)
             request.httpBody = jsonData
-            let task = URLSession.shared.dataTask(with: request) { (_, _, error) in
+            let task = URLSession.shared.dataTask(with: request) { _, _, error in
                 if let error = error {
                     print("SignUp failed with error: \(error)")
                     completion(.failure(.failedSignUp))
@@ -76,7 +76,7 @@ class PlantController {
         do {
             let jsonData = try JSONEncoder().encode(user)
             request.httpBody = jsonData
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     print("Sign in failed with error: \(error)")
                     completion(.failure(.failedSignIn))
@@ -142,7 +142,7 @@ class PlantController {
                 return
             }
             
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     print("Error PUTting task to server: \(error)")
                     completion(.failure(.tryAgain))
@@ -186,8 +186,10 @@ class PlantController {
         request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(response!)
+        let task = URLSession.shared.dataTask(with: request) { _, response, _ in
+            if let response = response {
+                print(response)
+            }
             completion(.success(true))
         }
         
@@ -208,7 +210,7 @@ class PlantController {
         request.addValue("Bearer \(bearer.jwt)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error fetching entries: \(error)")
                 completion(.failure(.tryAgain))
@@ -243,7 +245,7 @@ class PlantController {
         let context = CoreDataStack.shared.container.newBackgroundContext()
         
         // TODO: Check filters?
-        let identifiersToFetch = representations.compactMap({$0.id})
+        let identifiersToFetch = representations.compactMap({ $0.id })
         
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
         var plantsToCreate = representationsByID
