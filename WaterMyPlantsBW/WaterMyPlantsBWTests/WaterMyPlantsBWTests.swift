@@ -12,7 +12,6 @@ import CoreData
 
 class WaterMyPlantsBWTests: XCTestCase {
 
-
     var newUser: String {
         return "Ian1"
     }
@@ -22,7 +21,7 @@ class WaterMyPlantsBWTests: XCTestCase {
                let testUser1 = User(username: newUser, password: "ian123", phonenumber: "121-212-1212")
                print("User \(testUser1.username) has been created ")
                plantController.signUp(with: testUser1, completion: { error in
-                   XCTAssertNil(error)
+                    XCTAssertNil(error)
                })
     }
 
@@ -34,10 +33,25 @@ class WaterMyPlantsBWTests: XCTestCase {
                })
     }
 
-
-
-    func testCancelSignUpNotification() {
-
+    func testSignUpNotification() {
+        let loginVC = LoginViewController()
+        loginVC.loginTypeSegmentedControl.selectedSegmentIndex = 0
+        // Simulates the user tapping sign up with the current segment set to "Sign Up"
+        let alertController = UIAlertController(title: "Sign Up Complete",
+                                                message: "Please sign in",
+                                                preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK",
+                                        style: .default,
+                                        handler: nil)
+        alertController.addAction(alertAction)
+        loginVC.present(alertController, animated: true)
+        loginVC.loginType = .signIn
+        loginVC.loginTypeSegmentedControl.selectedSegmentIndex = 1
+        loginVC.signInButton.setTitle("Sign In", for: .normal)
+        loginVC.phoneNumberTextField.isHidden = true
+        
+        XCTAssert(loginVC.phoneNumberTextField.isHidden)
+        XCTAssert(loginVC.loginTypeSegmentedControl.selectedSegmentIndex == 1)
     }
 
     // PlantController
@@ -60,15 +74,20 @@ class WaterMyPlantsBWTests: XCTestCase {
             }()
             XCTAssertNotNil(fetchedResultsController.object(at: [0]))
         }
-        
-    
 
     // PlantTableViewHelper
+    
     func testCancelTapped() {
-        
+        let nav = UINavigationController(rootViewController: LoginViewController())
+        let destinationVC = PlantTableViewController()
+        nav.setViewControllers([destinationVC], animated: true)
+        nav.present(destinationVC, animated: true, completion: nil)
+        destinationVC.dismiss(animated: true, completion: nil)
+        XCTAssertFalse(destinationVC.isBeingPresented)
     }
     
- // PlantTableViewHelper
+    // PlantTableViewHelper
+    
     func testPlantWasAdded() {
         let newPlant = Plant(nickname: "Tree", species: "Elm", h2ofrequency: "Daily")
         XCTAssert(newPlant.nickname == "Tree")
@@ -84,13 +103,25 @@ class WaterMyPlantsBWTests: XCTestCase {
            XCTAssert(representation?.species == "Fern")
 
        }
-//Popup
+    
+    //Popup
+    
     func testAddPhotoPickerController() {
-
+        let plant = Plant(nickname: "Test Plant", species: "Fern", h2ofrequency: "Daily")
+        XCTAssert(plant.image == nil)
+        let image = UIImage(named: "defaultPlant2")
+        let imageData = image?.pngData()
+        plant.image = imageData
+        XCTAssert(plant.image != nil)
     }
 
-    func testImagePickerController() {
-
-
+    func testDeletePlant() {
+        let newPlant: Plant = Plant(nickname: "Test Plant", species: "Thirsty", h2ofrequency: "Hourly")
+        var mockPlants: [Plant] = []
+        mockPlants.append(newPlant)
+        XCTAssertFalse(mockPlants.isEmpty)
+        mockPlants.removeAll()
+        XCTAssert(mockPlants.isEmpty)
+        // TODO: May want to refactor to save plant to core data. Unsure how to do so for a unit test only.
     }
 }
