@@ -45,6 +45,7 @@ class Popup: UIView {
         addSubview(textFieldStack)
     }
     
+    
     func configurePlantImageView() {
         // Configure
         addPlantImageView.layer.cornerRadius = 10

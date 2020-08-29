@@ -11,6 +11,7 @@ import UIKit
 class PlantDetailViewController: UIViewController {
     
     // MARK: - Properties
+    let plantTitleLabel = UILabel()
     let plantImage = UIImageView()
     let nameLabel = UILabel()
     let plantNameTextfield = UITextField()
@@ -34,6 +35,7 @@ class PlantDetailViewController: UIViewController {
         navigationItem.title = "\(name)"
         addSubviews()
         updateViews()
+        configurePlantTitleLabel()
         configurePlantImage()
         configureStackView()
         view.backgroundColor = ColorsHelper.mintGreen
@@ -51,8 +53,22 @@ class PlantDetailViewController: UIViewController {
     
     // MARK: - Helper Methods
     func addSubviews() {
+        view.addSubview(plantTitleLabel)
         view.addSubview(plantImage)
         view.addSubview(stack)
+    }
+    
+    func configurePlantTitleLabel() {
+        // Configure
+        plantTitleLabel.text = "Plant Information"
+        plantTitleLabel.textColor = .black
+        plantTitleLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        
+        // Constraints
+        plantTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        plantTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        plantTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
     }
     
     func configurePlantImage() {
