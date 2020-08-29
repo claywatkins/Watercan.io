@@ -78,7 +78,6 @@ extension PlantTableViewController {
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.7)
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
