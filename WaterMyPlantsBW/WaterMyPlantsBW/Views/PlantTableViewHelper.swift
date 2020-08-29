@@ -44,7 +44,7 @@ extension PlantTableViewController {
     
     func setUpNavBar() {
         navigationController?.navigationBar.barTintColor = .systemGray6
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
@@ -59,7 +59,7 @@ extension PlantTableViewController {
         }
     }
     
-    @objc private func addPlantPopup(){
+    @objc private func addPlantPopup() {
         animateScaleIn(desiredView: blurView)
         animateScaleInPopUpView()
         popUpView.addPlantImageView.image = UIImage(named: "defaultPlant2")
@@ -78,7 +78,6 @@ extension PlantTableViewController {
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.7)
         popUpView.layer.cornerRadius = 20
         popUpView.addComponentsToPopupView()
-        //        popUpView.configurePlantLabel()
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
@@ -115,7 +114,7 @@ extension PlantTableViewController {
         UIView.animate(withDuration: 0.2, animations: {
             desiredView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             desiredView.alpha = 0
-        }, completion: { (success: Bool) in
+        }, completion: { (_: Bool) in
             desiredView.removeFromSuperview()
         })
         
@@ -142,19 +141,18 @@ extension PlantTableViewController: PlantAddedProtocol {
             let image = popUpView.addPlantImageView.image
             else { return }
         let newPlant = Plant(nickname: name, species: species, h2ofrequency: wateringFrequency)
-        plantController.sendPlantToServer(plant: newPlant) { (returnedPlant) in
-            do{
+        plantController.sendPlantToServer(plant: newPlant) { returnedPlant in
+            do {
                 let result = try returnedPlant.get()
                 newPlant.id = Int16(result.id!)
                 newPlant.image = image.pngData()
                 let moc = CoreDataStack.shared.mainContext
-                do{
+                do {
                     try moc.save()
                 } catch {
                     print("Error saving Plant Object: \(error)")
                 }
-            }
-            catch {
+            } catch {
                 print("Sending plant to server was not successful: \(error)")
             }
         }

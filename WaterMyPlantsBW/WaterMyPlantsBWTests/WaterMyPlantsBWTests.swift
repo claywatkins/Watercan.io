@@ -13,7 +13,7 @@ import CoreData
 class WaterMyPlantsBWTests: XCTestCase {
 
     var newUser: String {
-        return "Ian1"
+         "Ian1"
     }
 
     func testSignUp() {
