@@ -50,6 +50,7 @@ class PlantTableViewController: UIViewController {
         popUpView.plantNameTextfield.delegate = self
         popUpView.plantSpeciesTextfield.delegate = self
         popUpView.waterFrequencyTextField.delegate = self
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +80,10 @@ extension PlantTableViewController: UITableViewDataSource, UITableViewDelegate {
         if let plantImage = plants.image {
             cell.plantImageView.image = UIImage(data: plantImage)
         }
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = ColorsHelper.battleshipGrey
+        cell.selectedBackgroundView = backgroundView
+        cell.backgroundColor = ColorsHelper.laurelGreen
         return cell
     }
     

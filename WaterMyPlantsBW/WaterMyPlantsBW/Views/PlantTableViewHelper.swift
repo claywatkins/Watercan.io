@@ -12,7 +12,7 @@ import CoreData
 extension PlantTableViewController {
     
     // MARK: - Helper Methods
-    func createTableView() {        
+    func createTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -38,13 +38,13 @@ extension PlantTableViewController {
     
     func setupViewAsthetics() {
         // overrideUserInterfaceStyle = .dark
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = ColorsHelper.mintGreen
         navigationItem.title = "Plants"
     }
     
     func setUpNavBar() {
-        navigationController?.navigationBar.barTintColor = .systemGray6
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.barTintColor = ColorsHelper.mintGreen
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
         let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlantPopup))
         navigationItem.setRightBarButton(barButtonAdd, animated: true)
@@ -81,7 +81,7 @@ extension PlantTableViewController {
         popUpView.configurePlantImageView()
         popUpView.configureAddImageButton()
         popUpView.configureStackView()
-        popUpView.backgroundColor = UIColor(red: 20, green: 68, blue: 20)
+        popUpView.backgroundColor = ColorsHelper.darkGreen
     }
     
     /// Animates a view to scale in and display

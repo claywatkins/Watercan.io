@@ -36,6 +36,7 @@ class PlantDetailViewController: UIViewController {
         updateViews()
         configurePlantImage()
         configureStackView()
+        view.backgroundColor = ColorsHelper.mintGreen
     }
     
     // MARK: - Methods
