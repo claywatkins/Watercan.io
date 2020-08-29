@@ -39,6 +39,7 @@ class WaterMyPlantsBWUITests: XCTestCase {
     }
     
     func testAddPlantButtons() {
+
         app.launch()
         let app = XCUIApplication()
         app.segmentedControls.buttons["Sign In"].tap()
