@@ -2,7 +2,7 @@
 //  Plant+Convenience.swift
 //  WaterMyPlantsBW
 //
-//  Created by BrysonSaclausa on 8/27/20.
+//  Created by Clayton Watkins on 8/25/20.
 //  Copyright © 2020 Clayton Watkins. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ extension Plant {
     var plantRepresentation: PlantRepresentation? {
         guard let nickname = nickname,
             let species = species,
-            let h20Frequency = h2oFrequency else { return nil}
+            let h20Frequency = h2ofrequency else { return nil}
         
         return PlantRepresentation(nickname: nickname, species: species, h2ofrequency: h20Frequency)
     }
@@ -29,7 +29,7 @@ extension Plant {
         self.init(context: context)
         self.nickname = nickname
         self.species = species
-        self.h2oFrequency = h2ofrequency
+        self.h2ofrequency = h2ofrequency
     }
     
     // Turning a PlantRepresentation into a Plant object for saving to CoreData
@@ -44,4 +44,3 @@ extension Plant {
     }
     
 }
-

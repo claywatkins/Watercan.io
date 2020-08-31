@@ -2,7 +2,7 @@
 //  User.swift
 //  WaterMyPlantsBW
 //
-//  Created by BrysonSaclausa on 8/21/20.
+//  Created by Clayton Watkins on 8/25/20.
 //  Copyright © 2020 Clayton Watkins. All rights reserved.
 //
 
