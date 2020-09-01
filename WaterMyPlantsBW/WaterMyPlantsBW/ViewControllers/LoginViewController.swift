@@ -176,7 +176,9 @@ class LoginViewController: UIViewController {
             // Depending on LoginType:
             if loginType == .signUp {
                 plantController.signUp(with: user, completion: { result in
-                    self.phoneNumberTextField.isHidden = false
+                    DispatchQueue.main.async {
+                        self.phoneNumberTextField.isHidden = false
+                    }
                     do {
                         let success = try result.get()
                         if success {
