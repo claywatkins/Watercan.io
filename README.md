@@ -9,4 +9,4 @@
 * Full persistence locally with CoreData and a web backend for online saving
 
 ### ⭐️ Found this repository useful? ⭐️
-Why not [star the project](https://github.com/claywatkins/iOS/stargazers)?
+Why not [star the project](https://github.com/claywatkins/Watercan.io/stargazers)?
